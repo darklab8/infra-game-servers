@@ -43,5 +43,14 @@
 - https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin/files (dep to extra cells)
 - https://www.curseforge.com/minecraft/mc-mods/thaumic-bases-unofficial/download/4050229
 - https://www.curseforge.com/minecraft/mc-mods/buildcraft/download/3204475
-
+- https://www.curseforge.com/minecraft/mc-mods/iron-chests/download/2747935
+- https://www.curseforge.com/minecraft/mc-mods/evilcraft/download/2811267
+- https://www.curseforge.com/minecraft/mc-mods/thaumcraft-inventory-scanning/download/2559089
+- https://www.curseforge.com/minecraft/mc-mods/industrial-upgrade/download/4382983
+- https://www.curseforge.com/minecraft/mc-mods/opencomputers/files
 plans for installing:
+Opencraft
+ComputerCraft
+OpenComputers
+ExtraUtilities 2
+Grimoire of Gaia 3 - many new mobs
