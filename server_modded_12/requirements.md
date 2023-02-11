@@ -31,6 +31,9 @@
 - https://www.curseforge.com/minecraft/mc-mods/guide-api/download/2645992 (dep to blood magic)
 - https://www.curseforge.com/minecraft/mc-mods/botania/download/3330934
 - https://www.curseforge.com/minecraft/mc-mods/thaumic-tinkerer/files
+- https://www.curseforge.com/minecraft/mc-mods/ae2-stuff/files
+- https://www.curseforge.com/minecraft/mc-mods/bdlib/download/2518031 (dep to ae2 stuff)
+- https://www.curseforge.com/minecraft/mc-mods/gendustry/files
 
 installing:
 - https://github.com/ForestryMC (lets go witiout binnies)
