@@ -34,7 +34,19 @@
 - https://www.curseforge.com/minecraft/mc-mods/ae2-stuff/files
 - https://www.curseforge.com/minecraft/mc-mods/bdlib/download/2518031 (dep to ae2 stuff)
 - https://www.curseforge.com/minecraft/mc-mods/gendustry/files
+- https://www.curseforge.com/minecraft/mc-mods/blood-arsenal/files
 
-installing:
+plans for installing:
 - https://github.com/ForestryMC (lets go witiout binnies)
-
+- Forbidden Magic
+- TreeCapitator?  
+- Immersive integration may be
+- Witchery
+- Extra Cells
+- Super Sollar Panels?  (edited)
+- TaintedMagic
+- Thaumic Horizons 
+- Thaumic Bases  не помню что это уже
+- Symcalc, ухты. классный мод, увидеть стабильность алтаря таумкрафта (edited)
+- Gadomancy may be may be
+- Solar Expansion 
