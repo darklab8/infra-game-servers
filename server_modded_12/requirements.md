@@ -27,6 +27,9 @@
 - https://www.curseforge.com/minecraft/mc-mods/baubles/download/2518667 (dep to thaumcraft)
 - https://www.curseforge.com/minecraft/mc-mods/thaumic-energistics/download/2915506
 - https://www.curseforge.com/minecraft/mc-mods/im-crossover-ic2/files
+- https://www.curseforge.com/minecraft/mc-mods/blood-magic/download/2822288
+https://www.curseforge.com/minecraft/mc-mods/guide-api/download/2645992 (dep to blood magic)
+- https://www.curseforge.com/minecraft/mc-mods/botania/download/3330934
 
 installing:
 - https://github.com/ForestryMC (lets go witiout binnies)
