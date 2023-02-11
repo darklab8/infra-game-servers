@@ -14,6 +14,7 @@
 - https://www.curseforge.com/minecraft/mc-mods/thermal-foundation/download/2926428 (dep to thermal exp)
 - https://www.curseforge.com/minecraft/mc-mods/redstone-flux/download/2920436 (dep to cofh core)
 - https://www.curseforge.com/minecraft/mc-mods/cofh-world (dep to thermal foundation)
+- https://www.curseforge.com/minecraft/mc-mods/thermal-innovation/download/2920441
 - https://www.curseforge.com/minecraft/mc-mods/ender-io/files
 - https://www.curseforge.com/minecraft/mc-mods/endercore/download/2972849 (dep to ender io)
 - https://www.curseforge.com/minecraft/mc-mods/draconic-evolution
