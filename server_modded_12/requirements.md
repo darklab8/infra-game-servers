@@ -45,6 +45,3 @@
 - https://www.curseforge.com/minecraft/mc-mods/buildcraft/download/3204475
 
 plans for installing:
-- https://github.com/ForestryMC (lets go witiout binnies)
-- TaintedMagic
-- Thaumic Horizons 
