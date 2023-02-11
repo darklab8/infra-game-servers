@@ -35,18 +35,16 @@
 - https://www.curseforge.com/minecraft/mc-mods/bdlib/download/2518031 (dep to ae2 stuff)
 - https://www.curseforge.com/minecraft/mc-mods/gendustry/files
 - https://www.curseforge.com/minecraft/mc-mods/blood-arsenal/files
+- https://www.curseforge.com/minecraft/mc-mods/solargeneration/download/2815726
+- https://www.curseforge.com/minecraft/mc-mods/treecapitator-updated/download/2722878
+- https://www.curseforge.com/minecraft/mc-mods/immersive-tech/download/2568579
+- https://www.curseforge.com/minecraft/mc-mods/bspkrscore/download/2924423 (dep to immersive tech)
+- https://www.curseforge.com/minecraft/mc-mods/ae-additions-extra-cells-2-fork/files/all?filter-game-version=2020709689%3A6756
+- https://www.curseforge.com/minecraft/mc-mods/shadowfacts-forgelin/files (dep to extra cells)
+- https://www.curseforge.com/minecraft/mc-mods/thaumic-bases-unofficial/download/4050229
+- https://www.curseforge.com/minecraft/mc-mods/buildcraft/download/3204475
 
 plans for installing:
 - https://github.com/ForestryMC (lets go witiout binnies)
-- Forbidden Magic
-- TreeCapitator?  
-- Immersive integration may be
-- Witchery
-- Extra Cells
-- Super Sollar Panels?  (edited)
 - TaintedMagic
 - Thaumic Horizons 
-- Thaumic Bases  не помню что это уже
-- Symcalc, ухты. классный мод, увидеть стабильность алтаря таумкрафта (edited)
-- Gadomancy may be may be
-- Solar Expansion 
