@@ -3,8 +3,9 @@ https://www.curseforge.com/minecraft/mc-mods/new-tardis-mod
 https://www.curseforge.com/minecraft/mc-mods/not-enough-items-1-8/files/2755792
 https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8/files/all?filter-game-version=2020709689%3A6756 (dep to NEI)
 https://www.curseforge.com/minecraft/mc-mods/hwyla (WAILA)
-https://www.curseforge.com/minecraft/mc-mods/industrial-craft/download/2746892
+https://www.curseforge.com/minecraft/mc-mods/industrial-craft/download/3838713 (updated, dep for thaum-crossover-ec2)
 https://www.curseforge.com/minecraft/mc-mods/advanced-solar-panels/download/2652182
+https://www.curseforge.com/minecraft/mc-mods/energy-control/download/3502268 (nuclear control 1.12.2)
 https://www.curseforge.com/minecraft/mc-mods/aroma1997s-dimensional-world/download/2672438
 https://www.curseforge.com/minecraft/mc-mods/aroma1997core/download/2676866 (dep to Aroma world)
 https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/download/2747063
@@ -20,7 +21,12 @@ https://www.curseforge.com/minecraft/mc-mods/brandons-core/download/3408276 (dep
 https://www.curseforge.com/minecraft/mc-mods/immersive-engineering/files/all?filter-game-version=2020709689%3A6756
 https://www.curseforge.com/minecraft/mc-mods/forestry
 https://beta.curseforge.com/minecraft/mc-mods/magic-bees/download/2855061
+https://www.curseforge.com/minecraft/mc-mods/the-midnight
+https://www.curseforge.com/minecraft/mc-mods/thaumcraft/download/2629023
+https://www.curseforge.com/minecraft/mc-mods/baubles/download/2518667 (dep to thaumcraft)
+https://www.curseforge.com/minecraft/mc-mods/thaumic-energistics/download/2915506
+https://www.curseforge.com/minecraft/mc-mods/im-crossover-ic2/files
 
 installing:
 https://github.com/ForestryMC (lets go witiout binnies)
-https://www.curseforge.com/minecraft/mc-mods/the-midnight hmm midnight 
+
