@@ -53,6 +53,7 @@
 - https://beta.curseforge.com/minecraft/mc-mods/universal-mod-core/files (dep to railroading)
 - https://beta.curseforge.com/minecraft/mc-mods/track-api/download/2825260 (dep to railroading)
 - https://www.curseforge.com/minecraft/mc-mods/advanced-solar-panels-patcher/files (patch to update ic2 to newest, dep to Industrial Upgrade)
+- https://www.curseforge.com/minecraft/mc-mods/industrial-upgrade/download/4382983
 
 plans for installing:
 
