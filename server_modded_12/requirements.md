@@ -49,11 +49,11 @@
 - https://www.curseforge.com/minecraft/mc-mods/opencomputers/files
 - https://www.curseforge.com/minecraft/mc-mods/extra-utilities/files
 - https://www.curseforge.com/minecraft/mc-mods/grimoire-of-gaia/download/2891787
-
+- https://beta.curseforge.com/minecraft/mc-mods/immersive-railroading/download/3437738
+- https://beta.curseforge.com/minecraft/mc-mods/universal-mod-core/files (dep to railroading)
+- https://beta.curseforge.com/minecraft/mc-mods/track-api/download/2825260 (dep to railroading)
 
 plans for installing:
-ExtraUtilities 2
-Grimoire of Gaia 3 - many new mobs
 
 crash from ic2 or smth
 - https://www.curseforge.com/minecraft/mc-mods/evilcraft/download/2811267
