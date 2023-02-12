@@ -7,9 +7,6 @@ services:
     volumes:
       # configs
       - type: bind
-        source: ./configs/server.properties
-        target: /code/server.properties
-      - type: bind
         source: ./configs/whitelist.json
         target: /code/whitelist.json
       - type: bind
@@ -28,5 +25,8 @@ services:
       - type: bind
         source: ./data/usercache.json
         target: /code/usercache.json
+      - type: bind
+        source: ./data/server.properties
+        target: /code/server.properties
     ports:
       - 25565:25565
