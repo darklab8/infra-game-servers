@@ -54,5 +54,6 @@
 - https://www.curseforge.com/minecraft/mc-mods/advanced-solar-panels-patcher/files (patch to update ic2 to newest, dep to Industrial Upgrade)
 - https://www.curseforge.com/minecraft/mc-mods/industrial-upgrade/download/4382983
 - https://www.curseforge.com/minecraft/mc-mods/cc-tweaked/files/all?filter-game-version=2020709689%3A6756
+- https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap
 
 plans for installing:
