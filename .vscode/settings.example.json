@@ -1,0 +1,6 @@
+{
+    "editor.formatOnSave": true,
+    "terminal.integrated.env.linux": {
+        "TF_VAR_production_hcloud_token": "example"
+    }
+}

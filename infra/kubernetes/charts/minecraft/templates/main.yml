@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: minecraft-app
+        triggerRedeploy: "1"
+    spec:
+      volumes:
+        - name: minecraft-persistent-storage
+          persistentVolumeClaim:
+            claimName: minecraft-{{ .Values.ENVIRONMENT }}-claim
+      containers:
+        - name: minecraft-ctr
+          image: darkwind8/minecraft:{{ .Values.image_version }}
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: "/code/data"
+              name: minecraft-persistent-storage
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "500m"
+            limits:
+              memory: "{{.Values.hard_memory_limit}}Mi"
+              cpu: "{{.Values.hard_cpu_limit}}m"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minecraft-{{ .Values.ENVIRONMENT }}-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: my-local-storage
+  local:
+    path: "/var/lib/darklab/minecraft_modded_12"
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - "{{ .Values.hostname }}"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: minecraft-{{ .Values.ENVIRONMENT }}-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: my-local-storage
+  resources:
+    requests:
+      storage: 150Gi
