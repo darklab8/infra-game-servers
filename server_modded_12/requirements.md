@@ -48,6 +48,7 @@
 - https://www.curseforge.com/minecraft/mc-mods/industrial-upgrade/download/4382983
 - https://www.curseforge.com/minecraft/mc-mods/opencomputers/files
 - https://www.curseforge.com/minecraft/mc-mods/extra-utilities/files
+- https://www.curseforge.com/minecraft/mc-mods/grimoire-of-gaia/download/2891787
 
 
 plans for installing:
