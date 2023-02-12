@@ -56,7 +56,3 @@
 - https://www.curseforge.com/minecraft/mc-mods/industrial-upgrade/download/4382983
 
 plans for installing:
-
-crash from ic2 or smth
-- https://www.curseforge.com/minecraft/mc-mods/evilcraft/download/2811267
-- https://www.curseforge.com/minecraft/mc-mods/cyclops-core/download/3159497 (dep to evilcraft)
