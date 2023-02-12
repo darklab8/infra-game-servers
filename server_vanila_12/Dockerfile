@@ -9,5 +9,6 @@ RUN apt-get install -y openjfx
 
 COPY server/* /code/
 
+# taken from https://mcversions.net/download/1.12.2
 CMD java -jar minecraft_server.1.12.2.jar
 

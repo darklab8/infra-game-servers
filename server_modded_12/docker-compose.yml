@@ -22,6 +22,8 @@ services:
       # data
       - ./data/logs:/code/logs
       - ./data/world:/code/world
+      - ./data/world_the_end:/code/world_the_end
+      - ./data/world_nether:/code/world_nether
       - type: bind
         source: ./data/usercache.json
         target: /code/usercache.json
@@ -30,3 +32,4 @@ services:
         target: /code/server.properties
     ports:
       - 25565:25565
+      - 4567:4567
