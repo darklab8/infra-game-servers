@@ -16,16 +16,80 @@ spec:
         triggerRedeploy: "1"
     spec:
       volumes:
-        - name: minecraft-persistent-storage
-          persistentVolumeClaim:
-            claimName: minecraft-{{ .Values.ENVIRONMENT }}-claim
+        - name: volume-logs
+          hostPath:
+            path: /var/lib/darklab/minecraft/logs
+            type: DirectoryOrCreate
+        - name: volume-world
+          hostPath:
+            path: /var/lib/darklab/minecraft/world
+            type: DirectoryOrCreate
+        - name: volume-world-end
+          hostPath:
+            path: /var/lib/darklab/minecraft/world_the_end
+            type: DirectoryOrCreate
+        - name: volume-world-nether
+          hostPath:
+            path: /var/lib/darklab/minecraft/world_nether
+            type: DirectoryOrCreate
+        - name: volume-auth-me
+          hostPath:
+            path: /var/lib/darklab/minecraft/AuthMe
+            type: DirectoryOrCreate
+        - name: volume-world-guard
+          hostPath:
+            path: /var/lib/darklab/minecraft/WorldGuard
+            type: DirectoryOrCreate
+        - name: volume-world-edit
+          hostPath:
+            path: /var/lib/darklab/minecraft/WorldEdit
+            type: DirectoryOrCreate
+        - name: volume-usercache
+          hostPath:
+            path: /var/lib/darklab/minecraft/usercache.json
+            type: File
+        - name: volume-properties
+          hostPath:
+            path: /var/lib/darklab/minecraft/server.properties
+            type: File
+        - name: volume-configs
+          configMap:
+            name: game-configs
       containers:
         - name: minecraft-ctr
           image: darkwind8/minecraft:{{ .Values.image_version }}
           imagePullPolicy: Always
           volumeMounts:
-            - mountPath: "/code/data"
-              name: minecraft-persistent-storage
+            - mountPath: /code/logs
+              name: volume-logs
+            - mountPath: /code/world
+              name: volume-world
+            - mountPath: /code/world_the_end
+              name: volume-world-end
+            - mountPath: /code/world_nether
+              name: volume-world-nether
+            - mountPath: /code/plugins/AuthMe
+              name: volume-auth-me
+            - mountPath: /code/plugins/WorldGuard
+              name: volume-world-guard
+            - mountPath: /code/plugins/WorldEdit
+              name: volume-world-edit
+            - mountPath: /code/usercache.json
+              name: volume-usercache
+            - mountPath: /code/server.properties
+              name: volume-properties
+            - name: volume-configs
+              mountPath: /code/whitelist.json
+              subPath: whitelist.json
+            - name: volume-configs
+              mountPath: /code/banned-ips.json
+              subPath: banned-ips.json
+            - name: volume-configs
+              mountPath: /code/ops.json
+              subPath: ops.json
+            - name: volume-configs
+              mountPath: /code/banned-players.json
+              subPath: banned-players.json
           resources:
             requests:
               memory: "250Mi"
@@ -33,37 +97,3 @@ spec:
             limits:
               memory: "{{.Values.hard_memory_limit}}Mi"
               cpu: "{{.Values.hard_cpu_limit}}m"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: minecraft-{{ .Values.ENVIRONMENT }}-pv
-spec:
-  capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: my-local-storage
-  local:
-    path: "/var/lib/darklab/minecraft_modded_12"
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: kubernetes.io/hostname
-              operator: In
-              values:
-                - "{{ .Values.hostname }}"
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: minecraft-{{ .Values.ENVIRONMENT }}-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: my-local-storage
-  resources:
-    requests:
-      storage: 150Gi

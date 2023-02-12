@@ -15,4 +15,4 @@
         tasks_from: download_config.yml
 
     - name: Create data folder
-      shell: mkdir -p /var/lib/darklab/darkbot
+      shell: mkdir -p /var/lib/darklab/minecraft

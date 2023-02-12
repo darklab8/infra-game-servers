@@ -1,6 +1,6 @@
 
 locals {
-  chart_path = "${path.module}/../../charts/darkbot"
+  chart_path = "${path.module}/../../charts/minecraft"
   # This hash forces Terraform to redeploy if a new template file is added or changed, or values are updated
   chart_hash  = sha1(join("", [for f in fileset(local.chart_path, "**/*ml") : filesha1("${local.chart_path}/${f}")]))
   environment = var.environment
