@@ -10,4 +10,11 @@ data:
   banned-players.json: |
     []
   ops.json: |
-    []
+    [
+      {
+        "uuid": "cb7e4f7a-5932-3468-9a13-e1e47a880dce",
+        "name": "darkwind",
+        "level": 4,
+        "bypassesPlayerLimit": false
+      }
+    ]
