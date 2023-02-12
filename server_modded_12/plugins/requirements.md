@@ -1,1 +1,4 @@
 - https://github.com/phybros/servertap
+- https://dev.bukkit.org/projects/worldguard
+- https://dev.bukkit.org/projects/worldedit
+- https://dev.bukkit.org/projects/authme-reloaded
