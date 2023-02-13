@@ -22,8 +22,6 @@ services:
       # data
       - ./data/logs:/code/logs
       - ./data/world:/code/world
-      - ./data/world_the_end:/code/world_the_end
-      - ./data/world_nether:/code/world_nether
       - ./data/AuthMe:/code/plugins/AuthMe # remembering auth of players
       - ./data/WorldGuard:/code/plugins/WorldGuard
       - ./data/WorldEdit:/code/plugins/WorldEdit

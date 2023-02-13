@@ -57,3 +57,4 @@
 - https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap
 
 plans for installing:
+- Find tree capacitor alternative.

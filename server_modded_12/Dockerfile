@@ -11,6 +11,7 @@ COPY mods /code/mods
 COPY plugins /code/plugins
 COPY server/* /code/
 
-# CMD java -jar minecraft_server.1.12.2.jar
-CMD java -jar spigot-1.12.2.jar
-
+# searcg engine list here: https://github.com/itzg/docker-minecraft-server
+# discussions: https://www.spigotmc.org/threads/i-need-server-software-that-lets-me-use-forge-mods-spigot-plugins.252711/
+# chosen: https://github.com/MohistMC/Mohist
+CMD java -jar mohist-1.12.2-319-server.jar

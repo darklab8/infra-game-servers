@@ -12,3 +12,8 @@ tasks:
     cmds:
       - task: docker:build
       - task: docker:push
+
+  clean:
+    cmds:
+      - sudo rm -R data/*
+      - cp -R data_examples/* data/
