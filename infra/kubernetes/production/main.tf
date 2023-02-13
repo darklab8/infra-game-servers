@@ -12,5 +12,5 @@ module "minecraft" {
     hard_memory = 14000
     hard_cpu    = 3500
   }
-  image_version = "modded-12.2-v0.1.0"
+  image_version = "modded-12.2-v0.1.1"
 }
