@@ -1,0 +1,30 @@
+# TODO implement restarter
+# apiVersion: batch/v1
+# kind: CronJob
+# metadata:
+#   name: restart-minecraft
+# spec:
+#   schedule: "0 10 * * *"
+#   successfulJobsHistoryLimit: 2
+#   failedJobsHistoryLimit: 2
+#   jobTemplate:
+#     spec:
+#       template:
+#         spec:
+#           volumes:
+#             - name: secret-vol
+#               secret:
+#                 secretName: kubeconfig
+#           containers:
+#             - name: restart
+#               image: registry.gitlab.com/darklab2/darklab_pipeliner/darklab-pipeliner:kubectl-v1.0.3
+#               imagePullPolicy: IfNotPresent
+#               command: ["/bin/sh", "-c"]
+#               args:
+#                 [
+#                   "kubectl rollout restart deployment/minecraft-techno-deploy --namespace=minecraft-techno-prod",
+#                 ]
+#               volumeMounts:
+#                 - name: secret-vol
+#                   mountPath: "/root/.kube"
+#           restartPolicy: Never
