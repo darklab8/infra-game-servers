@@ -1,0 +1,8 @@
+tasks:
+  server:build:
+    cmds:
+      - docker-compose down ;  docker-compose build
+
+  server:run:
+    cmds:
+      - docker-compose run --service-ports app
