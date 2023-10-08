@@ -26,6 +26,9 @@ services:
       - ./data/logs:/code/logs
       - ./data/world:/code/world
       - ./data/libraries:/code/libraries
+      
+      # for custom stuff u wish to copy out of running server
+      - ./data/output:/code/output
 
       - type: bind
         source: ./data/usercache.json
