@@ -18,5 +18,5 @@ COPY server/Mohist-1.7.10-46-server.jar server/eula.txt /code/
 # https://mohistmc.com/
 # https://mohistmc.com/download
 # https://mohistmc.com/builds/1.7.10/Mohist-1.7.10-46-server.jar
-CMD java -jar Mohist-1.7.10-46-server.jar
+CMD java -noverify -jar Mohist-1.7.10-46-server.jar
 
