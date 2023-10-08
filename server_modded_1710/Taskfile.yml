@@ -1,0 +1,13 @@
+version: "3"
+
+env:
+  CLIENT_FOLDER: /home/naa/.minecraft
+
+tasks:
+  server:build:debug:
+    cmds:
+      - sudo rm -R data/world ; docker-compose down ;  docker-compose build ; docker-compose run --service-ports app
+
+  client:mount:
+    cmds:
+      - sudo mount $(pwd)/mods $CLIENT_FOLDER/mods

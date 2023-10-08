@@ -1,1 +1,0 @@
-sudo mount $(pwd)/mods /home/naa/.minecraft/mods
