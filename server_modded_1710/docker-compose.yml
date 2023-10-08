@@ -26,7 +26,10 @@ services:
       - ./data/logs:/code/logs
       - ./data/world:/code/world
       - ./data/libraries:/code/libraries
-      
+      - ./data/plugins/LoginSecurity:/code/plugins/LoginSecurity
+      - ./data/plugins/WorldGuard:/code/plugins/WorldGuard
+      - ./data/plugins/WorldEdit:/code/plugins/WorldEdit
+
       # for custom stuff u wish to copy out of running server
       - ./data/output:/code/output
 

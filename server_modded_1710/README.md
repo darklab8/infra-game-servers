@@ -7,3 +7,8 @@
 - Download tlaunched and turn 1.7.10 optifine forge mode
 - put mods files into your game client mods folder
 - start and connect :smile:
+
+### For logins
+
+- /register password password
+- /login password

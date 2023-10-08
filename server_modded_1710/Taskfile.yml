@@ -4,9 +4,16 @@ env:
   CLIENT_FOLDER: /home/naa/.minecraft
 
 tasks:
-  server:build:debug:
+  server:run:debug:
     cmds:
-      - sudo rm -R data/world ; docker-compose down ;  docker-compose build ; docker-compose run --service-ports app
+      - sudo rm -R data/world | true
+      - sudo rm -R data/plugins | true
+      - sudo rm -R data/logs | true
+      - docker-compose down ;  docker-compose build ; docker-compose run --service-ports app
+
+  server:run:
+    cmds:
+      - docker-compose down ; docker-compose run --service-ports app
 
   client:mount:
     cmds:
