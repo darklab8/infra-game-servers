@@ -11,7 +11,7 @@ tasks:
       - sudo rm -R data/plugins | true
       - sudo rm -R data/logs | true
       - echo $COMPOSE_F
-      - docker-compose -f $COMPOSE_F down ;  docker-compose -f $COMPOSE_F down  build ; docker-compose -f $COMPOSE_F down run --rm --service-ports app
+      - docker-compose -f $COMPOSE_F down ;  docker-compose -f $COMPOSE_F build ; docker-compose -f $COMPOSE_F run --rm --service-ports app
 
   server:debug:run:
     cmds:
