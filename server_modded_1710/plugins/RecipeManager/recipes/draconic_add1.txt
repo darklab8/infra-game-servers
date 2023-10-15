@@ -1,0 +1,5 @@
+CRAFT DraconicEnergyCore
+draconicevolution_draconiumingot:0 + awwayoftime_bloodmagicbaseitems:27 + draconicevolution_draconiumingot:0
+botania_manaresource:4 + galaxyspace_itemheavydutyplate:2 + thaumcraft_itemresource:16
+draconicevolution_draconiumingot:0 + ic2_itempartiridium:0 + draconicevolution_draconiumingot:0
+= draconicevolution_draconiumenergycore:0:1

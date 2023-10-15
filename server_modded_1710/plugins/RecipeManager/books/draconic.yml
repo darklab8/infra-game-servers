@@ -1,0 +1,14 @@
+# Recipe book configuration (last loaded at Oct 15, 2023 12:47:36 PM)
+# Read 'recipe books.html' file to learn how to configure books.
+
+title: Draconic Stuff
+author: RecipeManager
+description: Book description written on the first page
+settings:
+  pervolume: 50
+  cover: true
+  contents: true
+  end: true
+  customend: ''
+volume 1:
+- DraconicEnergyCore

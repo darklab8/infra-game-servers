@@ -21,6 +21,8 @@ services:
       - type: bind
         source: ./configs/ops.json
         target: /code/ops.json
+      - ./plugins/RecipeManager/recipes:/code/plugins/RecipeManager/recipes
+      - ./plugins/RecipeManager/books:/code/plugins/RecipeManager/books
 
       # data
       - ./data/logs:/code/logs
@@ -29,6 +31,15 @@ services:
       - ./data/plugins/LoginSecurity:/code/plugins/LoginSecurity
       - ./data/plugins/WorldGuard:/code/plugins/WorldGuard
       - ./data/plugins/WorldEdit:/code/plugins/WorldEdit
+      - ./data/config/:/code/config
+      - ./data/asm/:/code/asm
+      - ./data/mohist-config/:/code/mohist-config
+      # - type: bind
+      #   source: ./data/spigot.yml
+      #   target: /code/spigot.yml
+      # - type: bind
+      #   source: ./data/thermos.yml
+      #   target: /code/thermos.yml
 
       # for custom stuff u wish to copy out of running server
       - ./data/output:/code/output

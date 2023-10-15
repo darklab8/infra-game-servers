@@ -1,0 +1,18 @@
+craft
+draconicevolution_draconiccore + cobblestone + nether_star
+cobblestone + cobblestone + cobblestone
+cobblestone + cobblestone + cobblestone
+= workbench:0:63
+@ingredientcondition draconicevolution_draconiccore | amount 40
+@ingredientcondition nether_star | amount 54
+@ingredientcondition cobblestone | amount 3
+@ingredientcondition cobblestone | amount 2
+
+combine
+draconicevolution_draconiccore + cobblestone + nether_star + cobblestone + cobblestone + cobblestone + cobblestone + cobblestone + cobblestone
+= workbench:0:63
+@ingredientcondition draconicevolution_draconiccore | amount 40
+@ingredientcondition nether_star | amount 54
+@ingredientcondition cobblestone | amount 3
+@ingredientcondition cobblestone | amount 2
+
