@@ -1,0 +1,50 @@
+version: "3.8"
+services:
+  app:
+    tty: true
+    container_name: minecraft
+    volumes:
+      # configs
+      - type: bind
+        source: ./configs/server.properties
+        target: /code/server.properties
+      - type: bind
+        source: ./configs/whitelist.json
+        target: /code/whitelist.json
+      - type: bind
+        source: ./configs/banned-ips.json
+        target: /code/banned-ips.json
+      - type: bind
+        source: ./configs/banned-players.json
+        target: /code/banned-players.json
+      - type: bind
+        source: ./configs/ops.json
+        target: /code/ops.json
+      - ./plugins/RecipeManager/recipes:/code/plugins/RecipeManager/recipes
+      - ./plugins/RecipeManager/books:/code/plugins/RecipeManager/books
+
+      # data
+      - ./data/logs:/code/logs
+      - ./data/world:/code/world
+      - ./data/libraries:/code/libraries
+      - ./data/plugins/LoginSecurity:/code/plugins/LoginSecurity
+      - ./data/plugins/WorldGuard:/code/plugins/WorldGuard
+      - ./data/plugins/WorldEdit:/code/plugins/WorldEdit
+      - ./data/config/:/code/config
+      - ./data/asm/:/code/asm
+      - ./data/mohist-config/:/code/mohist-config
+      - type: bind
+        source: ./configs/config/evilcraft.cfg
+        target: /code/config/evilcraft.cfg
+      - type: bind
+        source: ./configs/config/witchery.cfg
+        target: /code/config/witchery.cfg
+
+      # for custom stuff u wish to copy out of running server
+      - ./data/output:/code/output
+
+      - type: bind
+        source: ./data/usercache.json
+        target: /code/usercache.json
+    ports:
+      - 25565:25565

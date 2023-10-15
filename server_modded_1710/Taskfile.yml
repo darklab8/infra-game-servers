@@ -2,18 +2,20 @@ version: "3"
 
 env:
   CLIENT_FOLDER: /home/naa/.minecraft
+  COMPOSE_F: docker-compose.debug.yml
 
 tasks:
-  server:run:debug:
+  server:debug:rerun:
     cmds:
       - sudo rm -R data/world | true
       - sudo rm -R data/plugins | true
       - sudo rm -R data/logs | true
-      - docker-compose down ;  docker-compose build ; docker-compose run --service-ports app
+      - echo $COMPOSE_F
+      - docker-compose -f $COMPOSE_F down ;  docker-compose -f $COMPOSE_F down  build ; docker-compose -f $COMPOSE_F down run --rm --service-ports app
 
-  server:run:
+  server:debug:run:
     cmds:
-      - docker-compose down ; docker-compose run --service-ports app
+      - docker-compose -f $COMPOSE_F down ; docker-compose -f $COMPOSE_F run --rm --service-ports app
 
   client:mount:
     cmds:
