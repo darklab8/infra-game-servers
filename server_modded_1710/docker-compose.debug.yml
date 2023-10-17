@@ -3,6 +3,7 @@ services:
   app:
     build:
       context: .
+    stdin_open: true 
     tty: true
     container_name: minecraft
     volumes:
