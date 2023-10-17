@@ -11,13 +11,19 @@ data "hcloud_image" "default" {
 
 resource "hcloud_server" "cluster" {
   name        = "${var.environment}-${var.name}"
-  image       = data.hcloud_image.default.name
+  image       = data.hcloud_image.default.id
   datacenter  = local.datacenter
   server_type = local.server_type
   ssh_keys    = var.ssh_keys
   public_net {
     ipv4_enabled = true
     ipv6_enabled = true
+  }
+
+  lifecycle {
+    ignore_changes = [
+      image,
+    ]
   }
 }
 
