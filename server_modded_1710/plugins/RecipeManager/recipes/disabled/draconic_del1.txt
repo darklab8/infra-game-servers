@@ -1,6 +1,0 @@
-@remove
-craft
-draconicevolution_draconiumingot:0 + draconicevolution_draconiccore:0 + draconicevolution_draconiumingot:0
-draconicevolution_draconiccore:0 + nether_star:0 + draconicevolution_draconiccore:0
-draconicevolution_draconiumingot:0 + draconicevolution_draconiccore:0 + draconicevolution_draconiumingot:0
-= draconicevolution_draconiccore:0:1

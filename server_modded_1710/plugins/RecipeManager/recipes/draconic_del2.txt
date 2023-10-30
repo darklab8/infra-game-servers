@@ -1,6 +1,0 @@
-@remove
-craft
-draconicevolution_draconiumingot:0 + redstone_block:* + draconicevolution_draconiumingot:0
-redstone_block:* + draconicevolution_draconiccore:0 + redstone_block:*
-draconicevolution_draconiumingot:0 + redstone_block:* + draconicevolution_draconiumingot:0
-= draconicevolution_draconiumenergycore:0:1
