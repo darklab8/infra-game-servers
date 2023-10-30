@@ -25,12 +25,12 @@ services:
         target: /code/ops.json
       - ./plugins/RecipeManager/recipes:/code/plugins/RecipeManager/recipes
       - ./plugins/RecipeManager/books:/code/plugins/RecipeManager/books
+      - ./scripts:/code/scripts
+      - ./libraries:/code/libraries
 
       # data
-      - ./data/scripts:/code/scripts
       - ./data/logs:/code/logs
       - ./data/world:/code/world
-      - ./libraries:/code/libraries
       - ./data/plugins/LoginSecurity:/code/plugins/LoginSecurity
       - ./data/plugins/WorldGuard:/code/plugins/WorldGuard
       - ./data/plugins/WorldEdit:/code/plugins/WorldEdit
