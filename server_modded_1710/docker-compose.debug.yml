@@ -27,6 +27,7 @@ services:
       - ./plugins/RecipeManager/books:/code/plugins/RecipeManager/books
 
       # data
+      - ./data/scripts:/code/scripts
       - ./data/logs:/code/logs
       - ./data/world:/code/world
       - ./libraries:/code/libraries
