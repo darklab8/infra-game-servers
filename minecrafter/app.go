@@ -54,6 +54,10 @@ func reactToEvent(line string) {
 	if player_left := RegexPlayerLeft.FindStringSubmatch(line); len(player_left) > 0 {
 		sendMessage(fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]))
 	}
+
+	if achivement := RegexPlayerAchievement.FindStringSubmatch(line); len(achivement) > 0 {
+		sendMessage(fmt.Sprintf("[%s] player %s has just earned the achievement %s", achivement[1], achivement[2], achivement[3]))
+	}
 }
 
 func ShellRunArgs(program string, args ...string) {
@@ -76,6 +80,7 @@ func ShellRunArgs(program string, args ...string) {
 var RegexPlayerJoined *regexp.Regexp
 var RegexPlayerLeft *regexp.Regexp
 var RegexPlayerMessage *regexp.Regexp
+var RegexPlayerAchievement *regexp.Regexp
 
 var dg *discorder.Discorder
 
@@ -83,6 +88,7 @@ func init() {
 	RegexPlayerJoined = utils.InitRegexExpression(`\[([0-9-:]+)\] \[Server thread\/INFO\]\: (\w+) joined the game`)
 	RegexPlayerMessage = utils.InitRegexExpression(`\[([0-9-:]+)\] \[Server thread\/INFO\]\: <(\w+)> ([\w+\s+]+)$`)
 	RegexPlayerLeft = utils.InitRegexExpression(`\[([0-9-:]+)\] \[Server thread\/INFO\]\: (\w+) left the game`)
+	RegexPlayerAchievement = utils.InitRegexExpression(`\[([0-9-:]+)\] \[Server thread\/INFO\]\: (\w+) has just earned the achievement ([\[\]\w\s]+)$`)
 
 	dg = discorder.NewClient()
 }
