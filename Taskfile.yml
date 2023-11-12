@@ -1,0 +1,26 @@
+version: "3"
+
+env:
+  tag_version: v0.1
+
+tasks:
+  docker:build:
+    cmds:
+      - docker build --tag darkwind8/minecrafter:$tag_version .
+
+  docker:push:
+    cmds:
+      - docker push darkwind8/minecrafter:$tag_version
+
+  docker:run:
+    cmds:
+      - docker run -it darkwind8/minecrafter:$tag_version
+
+  docker:buildpush:
+    cmds:
+      - task: docker:build
+      - task: docker:push
+
+  shell:production:
+    cmds:
+      - ssh -i ~/.ssh/id_rsa.darklab root@production.minecraft.dd84ai.com

@@ -28,3 +28,22 @@ module "dns" {
     },
   ]
 }
+
+provider "docker" {
+  host     = "ssh://root@${module.server.ipv4_address}:22"
+  ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-i", "~/.ssh/id_rsa.darklab"]
+}
+
+data "aws_ssm_parameter" "minecrafter" {
+  name = "/terraform/hetzner/minecrafter/production"
+}
+
+locals {
+  secrets = nonsensitive(jsondecode(data.aws_ssm_parameter.minecrafter.value))
+}
+
+module "minecrafter" {
+  source              = "../modules/minecrafter"
+  secrets             = local.secrets
+  tag_version         = "v0.1"
+}
