@@ -1,0 +1,13 @@
+---
+- hosts: cluster
+  become: yes
+
+  tasks:
+    - name: Create data folder
+      shell: mkdir -p /var/lib/avorion
+
+    - name: Template config
+      ansible.builtin.template:
+        src: server.ini
+        dest: /var/lib/avorion/server.ini
+        mode: u=rw,g=rw,o=rw

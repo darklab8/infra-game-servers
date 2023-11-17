@@ -1,12 +1,11 @@
 locals {
   datacenter  = "ash-dc1" # USA
-  image       = "ubuntu-22.04"
   server_type = var.server_power
   task_name   = "cluster"
 }
 
 data "hcloud_image" "default" {
-  name = "ubuntu-22.04"
+  name = "docker-ce"
 }
 
 resource "hcloud_server" "cluster" {
