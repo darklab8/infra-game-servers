@@ -1,7 +1,7 @@
 module "avorion_server" {
   source       = "../modules/hetzner_server"
   environment  = "production"
-  server_power = "cpx41"
+  server_power = "cpx31"
   name         = "avorion"
   ssh_keys = [
     module.key.darklab_id
