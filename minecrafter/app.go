@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"regexp"
 	"strings"
+	"time"
 )
 
 type LogCapturer struct {
@@ -94,7 +95,11 @@ func init() {
 }
 
 func RunBot() {
-	ShellRunArgs("docker", "logs", "minecraft", "-f")
+	for {
+		ShellRunArgs("docker", "logs", "minecraft")
+		time.Sleep(time.Second * 10)
+	}
+
 }
 
 // captured=[18:35:31] [Server thread/INFO]: darkwind left the game
