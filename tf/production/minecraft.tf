@@ -39,11 +39,16 @@ data "aws_ssm_parameter" "minecrafter" {
 }
 
 locals {
-  secrets = nonsensitive(jsondecode(data.aws_ssm_parameter.minecrafter.value))
+  minecrafter_secrets = nonsensitive(jsondecode(data.aws_ssm_parameter.minecrafter.value))
 }
 
 module "minecrafter" {
-  source              = "../modules/minecrafter"
-  secrets             = local.secrets
-  tag_version         = "v0.6"
+  source      = "../modules/gamebot"
+  image       = "minecrafter"
+  tag_version = "v0.6"
+  env_list = [
+    "DISCORD_BOT_TOKEN=${local.minecrafter_secrets["DISCORD_BOT_TOKEN"]}",
+    "MINECRAFTER_CHANNEL_ID=869888658033999873",
+    "DARKBOT_LOG_LEVEL=WARN"
+  ]
 }

@@ -1,20 +1,21 @@
 version: "3"
 
 env:
-  tag_version: v0.6
+  tag_version: v0.2
+  repo: avorioner
 
 tasks:
   docker:build:
     cmds:
-      - docker build --tag darkwind8/bot/minecrafter:$tag_version .
+      - docker build --tag darkwind8/${repo}:${tag_version} --target ${repo}-runner .
 
   docker:push:
     cmds:
-      - docker push darkwind8/bot/minecrafter:$tag_version
+      - docker push darkwind8/${repo}:${tag_version}
 
   docker:run:
     cmds:
-      - docker run -it darkwind8/bot/minecrafter:$tag_version
+      - docker run -it darkwind8/${repo}:${tag_version}
 
   docker:buildpush:
     cmds:

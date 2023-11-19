@@ -1,8 +1,12 @@
 # Create a docker image resource
 # -> docker pull nginx:latest
-resource "docker_image" "minecrafter" {
-  name         = "darkwind8/bot/minecrafter:${var.tag_version}"
+resource "docker_image" "bot" {
+  name         = "darkwind8/${var.image}:${var.tag_version}"
   keep_locally = true
+}
+
+variable "image" {
+  type = string
 }
 
 variable "tag_version" {
@@ -14,19 +18,15 @@ variable "debug" {
   default = false
 }
 
-variable "secrets" {
-  type = map(string)
+variable "env_list" {
+  type = list(string)
 }
 
 resource "docker_container" "minecrafter" {
-  name  = "minecrafter"
-  image = docker_image.minecrafter.image_id
+  name  = var.image
+  image = docker_image.bot.image_id
 
-  env = [
-    "DISCORD_BOT_TOKEN=${var.secrets["DISCORD_BOT_TOKEN"]}",
-    "MINECRAFTER_CHANNEL_ID=869888658033999873",
-    "DARKBOT_LOG_LEVEL=${var.debug ? "DEBUG" : "WARN"}"
-  ]
+  env = var.env_list
 
   restart = "always"
   volumes {
