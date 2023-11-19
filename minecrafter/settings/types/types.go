@@ -9,3 +9,5 @@ type FilePath string
 type DiscordChannelID string
 
 type DiscordMessageID string
+
+type Timestamp string

@@ -45,5 +45,5 @@ locals {
 module "minecrafter" {
   source              = "../modules/minecrafter"
   secrets             = local.secrets
-  tag_version         = "v0.2"
+  tag_version         = "v0.6"
 }
