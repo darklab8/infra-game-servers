@@ -29,16 +29,18 @@ func reactToEvent(line string) {
 
 	if captain := RegexCaptainFinished.FindStringSubmatch(line); len(captain) > 0 {
 		shipname := captain[2]
+		timestamp := types.DockerTimestamp(captain[1])
+		msg := fmt.Sprintf("[%s] ship %s finished its job", captain[1], captain[2])
 
 		if strings.Contains(shipname, "LAW-") {
 			logus.Info("Recognized as lawey's ship")
-			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("<@302481451973214209> [%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.OthersChannel)
-		} else if strings.Contains(shipname, "DARK-") || strings.Contains(shipname, "Explorer") || strings.Contains(shipname, "Miner") || strings.Contains(shipname, "Trader") || strings.Contains(shipname, "Scavenger") {
+			dg.SendDecoupledMsg(timestamp, fmt.Sprintf("<@302481451973214209> %s", msg), avorioner_settings.OthersChannel)
+		} else if strings.Contains(shipname, "DARK-") {
 			logus.Info("Recognized as darkwind's ship")
-			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("<@370435997974134785> [%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.DarkwindChannel)
+			dg.SendDecoupledMsg(timestamp, fmt.Sprintf("<@370435997974134785> %s", msg), avorioner_settings.DarkwindChannel)
 		} else {
 			logus.Info("Ship is not recognized")
-			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("[%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.OthersChannel)
+			dg.SendDecoupledMsg(timestamp, msg, avorioner_settings.OthersChannel)
 		}
 	}
 }
