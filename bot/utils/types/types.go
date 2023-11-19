@@ -10,4 +10,4 @@ type DiscordChannelID string
 
 type DiscordMessageID string
 
-type Timestamp string
+type DockerTimestamp string

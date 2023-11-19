@@ -1,7 +1,10 @@
 # Description
 
-Repository with minecraft docker-compose server builds
-See relevant readmes in folders
+Infra mono repo with game server builds and deployments and bot augmentations for integration with Discord
+
+list of game servers
+- Avorion
+- Minecraft from 1.7.10 to 1.12.2 (mod centric versions)
 
 ## Server_modded_1710
 

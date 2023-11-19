@@ -8,9 +8,10 @@ interface
 package discorder
 
 import (
-	"darklab_minecraft/bot/minecrafter/settings"
 	"darklab_minecraft/bot/utils/logus"
+	"darklab_minecraft/bot/utils/shared_settings"
 	"darklab_minecraft/bot/utils/types"
+	"strings"
 	"time"
 
 	"github.com/bwmarrin/discordgo"
@@ -23,7 +24,7 @@ type Discorder struct {
 func NewClient() *Discorder {
 	d := &Discorder{}
 
-	dg, err := discordgo.New("Bot " + settings.DiscordBotToken)
+	dg, err := discordgo.New("Bot " + shared_settings.DiscordBotToken)
 	logus.CheckFatal(err, "failed to init discord")
 	dg.Identify.Intents = discordgo.IntentsGuildMessages
 
@@ -96,4 +97,27 @@ func (d Discorder) GetLatestMessages(channelID types.DiscordChannelID) ([]Discor
 	messages = nil
 
 	return result, nil
+}
+
+/////
+
+func (dg Discorder) SendDecoupledMsg(timestamp types.DockerTimestamp, msg string, channel types.DiscordChannelID) {
+	// Docker timestamp is having precise timestamp up to milliseconds
+	// good enough for decoupling
+	logus.Info("sent_message= " + msg)
+
+	msgs, err := dg.GetLatestMessages(channel)
+
+	logus.CheckError(err, "failed to get discord latest msgs")
+	if err != nil {
+		return
+	}
+
+	for _, message := range msgs {
+		if strings.Contains(message.Content, string(timestamp)) {
+			return
+		}
+	}
+
+	dg.SengMessage(channel, msg)
 }

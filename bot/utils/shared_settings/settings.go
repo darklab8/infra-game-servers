@@ -1,4 +1,4 @@
-package settings
+package shared_settings
 
 import (
 	"darklab_minecraft/bot/utils/logus"
@@ -12,9 +12,9 @@ var DiscordBotToken string
 
 func init() {
 
-	channel, is_defined := os.LookupEnv("MINECRAFTER_CHANNEL_ID")
+	channel, is_defined := os.LookupEnv("DISCORD_CHANNEL_ID")
 	if !is_defined {
-		logus.Fatal("MINECRAFTER_CHANNEL_ID is not defined")
+		logus.Fatal("DISCORD_CHANNEL_ID is not defined")
 	}
 
 	Channel = types.DiscordChannelID(channel)
