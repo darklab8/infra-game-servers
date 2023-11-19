@@ -11,7 +11,7 @@ Optionally as single value can be added slogGroup
 */
 
 import (
-	"darklab_minecraft/minecrafter/settings/types"
+	"darklab_minecraft/bot/utils/types"
 	"fmt"
 	"log/slog"
 	"os"

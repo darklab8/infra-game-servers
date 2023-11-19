@@ -1,7 +1,7 @@
 package logus
 
 import (
-	"darklab_minecraft/minecrafter/settings/types"
+	"darklab_minecraft/bot/utils/types"
 	"fmt"
 	"log/slog"
 )

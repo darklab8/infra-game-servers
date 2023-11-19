@@ -8,9 +8,9 @@ interface
 package discorder
 
 import (
-	"darklab_minecraft/minecrafter/settings"
-	"darklab_minecraft/minecrafter/settings/logus"
-	"darklab_minecraft/minecrafter/settings/types"
+	"darklab_minecraft/bot/minecrafter/settings"
+	"darklab_minecraft/bot/utils/logus"
+	"darklab_minecraft/bot/utils/types"
 	"time"
 
 	"github.com/bwmarrin/discordgo"

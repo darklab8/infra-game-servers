@@ -1,6 +1,12 @@
+x-definitions:
+  lightweight-staging: &lightweight-staging
+    image: ubuntu:22.04
+    working_dir: /app
+    command: sh -c "touch /app/stdout.txt ; tail -F /app/stdout.txt"
+
 version: "3.8"
 services:
-  bot:
+  minecrafter:
     build:
       context: .
     container_name: minecrafter
@@ -9,3 +15,10 @@ services:
     environment:
       MINECRAFTER_CHANNEL_ID: ${MINECRAFTER_CHANNEL_ID}
       DISCORD_BOT_TOKEN: ${DISCORD_BOT_TOKEN}
+
+  minecraft:
+    <<: *lightweight-staging
+    container_name: minecraft
+  avorion:
+    <<: *lightweight-staging
+    container_name: avorion

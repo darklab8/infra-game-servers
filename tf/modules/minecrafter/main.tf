@@ -1,7 +1,7 @@
 # Create a docker image resource
 # -> docker pull nginx:latest
 resource "docker_image" "minecrafter" {
-  name         = "darkwind8/minecrafter:${var.tag_version}"
+  name         = "darkwind8/bot/minecrafter:${var.tag_version}"
   keep_locally = true
 }
 

@@ -11,9 +11,8 @@ COPY go.mod go.sum ./
 RUN go mod download -x
 
 RUN mkdir data
-COPY main.go ./
-COPY minecrafter minecrafter
-RUN CGO_ENABLED=0 go build -v -o main main.go
+COPY bot bot
+RUN CGO_ENABLED=0 go build -v -o main bot/minecrafter/main.go
 
 FROM docker:24.0.7-cli as runner
 WORKDIR /code

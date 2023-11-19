@@ -1,8 +1,8 @@
 package settings
 
 import (
-	"darklab_minecraft/minecrafter/settings/logus"
-	"darklab_minecraft/minecrafter/settings/types"
+	"darklab_minecraft/bot/utils/logus"
+	"darklab_minecraft/bot/utils/types"
 	"os"
 )
 

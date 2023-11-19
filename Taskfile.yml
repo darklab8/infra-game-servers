@@ -6,15 +6,15 @@ env:
 tasks:
   docker:build:
     cmds:
-      - docker build --tag darkwind8/minecrafter:$tag_version .
+      - docker build --tag darkwind8/bot/minecrafter:$tag_version .
 
   docker:push:
     cmds:
-      - docker push darkwind8/minecrafter:$tag_version
+      - docker push darkwind8/bot/minecrafter:$tag_version
 
   docker:run:
     cmds:
-      - docker run -it darkwind8/minecrafter:$tag_version
+      - docker run -it darkwind8/bot/minecrafter:$tag_version
 
   docker:buildpush:
     cmds:

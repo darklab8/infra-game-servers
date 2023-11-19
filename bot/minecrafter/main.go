@@ -1,12 +1,12 @@
-package minecrafter
+package main
 
 import (
 	"context"
-	"darklab_minecraft/minecrafter/discorder"
-	"darklab_minecraft/minecrafter/settings"
-	"darklab_minecraft/minecrafter/settings/logus"
-	"darklab_minecraft/minecrafter/settings/types"
-	"darklab_minecraft/minecrafter/utils"
+	"darklab_minecraft/bot/minecrafter/settings"
+	"darklab_minecraft/bot/utils"
+	"darklab_minecraft/bot/utils/discorder"
+	"darklab_minecraft/bot/utils/logus"
+	"darklab_minecraft/bot/utils/types"
 	"fmt"
 	"os/exec"
 	"regexp"
@@ -100,15 +100,18 @@ func init() {
 	dg = discorder.NewClient()
 }
 
-func RunBot() {
-	go func() {
-		for {
-			logus.Info("next RunBot loop for minecrafter")
-			ShellRunArgs(time.Second*30, "docker", "logs", "minecraft", "--timestamps", "--tail", "100", "-f")
-		}
-	}()
+// Bot staging invite link
+// https://discord.com/api/oauth2/authorize?client_id=1173347963536416838&permissions=68608&scope=bot
 
-	time.Sleep(time.Hour * 24 * 365)
+// Bot prod invite link
+// https://discord.com/api/oauth2/authorize?client_id=1173352014076448818&permissions=68608&scope=bot
+
+func main() {
+	loopDelay := time.Second * 30
+	for {
+		logus.Info("next RunBot loop for minecrafter")
+		ShellRunArgs(loopDelay, "docker", "logs", "minecraft", "--timestamps", "--tail", "100", "-f")
+	}
 }
 
 // captured=[18:35:31] [Server thread/INFO]: darkwind left the game
