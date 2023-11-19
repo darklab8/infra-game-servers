@@ -31,7 +31,7 @@ func reactToEvent(line string) {
 		shipname := captain[2]
 
 		if strings.Contains(shipname, "Explorer") || strings.Contains(shipname, "Miner") || strings.Contains(shipname, "Trader") || strings.Contains(shipname, "Scavenger") {
-			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("[%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.DarkwindChannel)
+			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("<@370435997974134785> [%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.DarkwindChannel)
 		} else {
 			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("[%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.OthersChannel)
 		}
@@ -50,7 +50,7 @@ func init() {
 	RegexPlayerJoined = utils.InitRegexExpression(`([0-9-:Z.T]+) <Server> Player (\w+) joined the galaxy`)
 
 	// 2023-11-19T16:45:12.858565589Z <Anarchist> some msg
-	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) <(\w+)> ([\w+ ]+)`)
+	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) <(\w+)> (.*)`)
 
 	// 2023-11-19T03:04:10.619815347Z <Server> Player Anarchist left the galaxy
 	RegexPlayerLeft = utils.InitRegexExpression(`([0-9-:Z.T]+) <Server> Player (\w+) left the galaxy`)

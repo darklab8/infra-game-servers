@@ -44,7 +44,7 @@ func init() {
 
 	// captured=[18:40:21] [Server thread/INFO]: <darkwind> writing something
 	// captured=[18:40:38] [Server thread/INFO]: <darkwind> bla bla bla
-	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: <(\w+)> ([\w+ ]+)`)
+	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: <(\w+)> (.*)`)
 
 	// captured=[18:35:31] [Server thread/INFO]: darkwind left the game
 	RegexPlayerLeft = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: (\w+) left the game`)
