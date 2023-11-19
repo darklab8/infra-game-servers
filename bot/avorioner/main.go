@@ -30,9 +30,14 @@ func reactToEvent(line string) {
 	if captain := RegexCaptainFinished.FindStringSubmatch(line); len(captain) > 0 {
 		shipname := captain[2]
 
-		if strings.Contains(shipname, "Explorer") || strings.Contains(shipname, "Miner") || strings.Contains(shipname, "Trader") || strings.Contains(shipname, "Scavenger") {
+		if strings.Contains(shipname, "LAW-") {
+			logus.Info("Recognized as lawey's ship")
+			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("<@302481451973214209> [%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.OthersChannel)
+		} else if strings.Contains(shipname, "DARK-") || strings.Contains(shipname, "Explorer") || strings.Contains(shipname, "Miner") || strings.Contains(shipname, "Trader") || strings.Contains(shipname, "Scavenger") {
+			logus.Info("Recognized as darkwind's ship")
 			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("<@370435997974134785> [%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.DarkwindChannel)
 		} else {
+			logus.Info("Ship is not recognized")
 			dg.SendDecoupledMsg(types.DockerTimestamp(captain[1]), fmt.Sprintf("[%s] ship %s finished its job", captain[1], captain[2]), avorioner_settings.OthersChannel)
 		}
 	}
@@ -56,7 +61,7 @@ func init() {
 	RegexPlayerLeft = utils.InitRegexExpression(`([0-9-:Z.T]+) <Server> Player (\w+) left the galaxy`)
 
 	// 2023-11-19T15:36:14.547639396Z Server: finishing Miner05 ...
-	RegexCaptainFinished = utils.InitRegexExpression(`([0-9-:Z.T]+) Server\: finishing (\w+) \.\.\.`)
+	RegexCaptainFinished = utils.InitRegexExpression(`([0-9-:Z.T]+) Server\: finishing ([A-Za-z-]+) \.\.\.`)
 
 	dg = discorder.NewClient()
 }

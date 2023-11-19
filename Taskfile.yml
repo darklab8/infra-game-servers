@@ -1,8 +1,8 @@
 version: "3"
 
 env:
-  tag_version: v0.7
-  repo: minecrafter
+  tag_version: v0.10
+  repo: avorioner
 
 tasks:
   docker:build:
