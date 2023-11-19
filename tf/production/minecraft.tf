@@ -45,10 +45,10 @@ locals {
 module "minecrafter" {
   source      = "../modules/gamebot"
   image       = "minecrafter"
-  tag_version = "v0.6"
+  tag_version = "v0.7"
   env_list = [
     "DISCORD_BOT_TOKEN=${local.minecrafter_secrets["DISCORD_BOT_TOKEN"]}",
-    "MINECRAFTER_CHANNEL_ID=869888658033999873",
+    "DISCORD_CHANNEL_ID=869888658033999873",
     "DARKBOT_LOG_LEVEL=WARN"
   ]
 }
