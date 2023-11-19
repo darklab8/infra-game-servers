@@ -16,31 +16,66 @@ import (
 func reactToEvent(line string) {
 	// // logus.Info("sending= " + line)
 	if player_joined := RegexPlayerJoined.FindStringSubmatch(line); len(player_joined) > 0 {
-		dg.SendDecoupledMsg(types.DockerTimestamp(player_joined[1]), fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
+		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_joined[1])), fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
 	}
 
 	if player_message := RegexPlayerMessage.FindStringSubmatch(line); len(player_message) > 0 && player_message[2] != "Server" {
-		dg.SendDecoupledMsg(types.DockerTimestamp(player_message[1]), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
+		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_message[1])), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
 	}
 
 	if player_left := RegexPlayerLeft.FindStringSubmatch(line); len(player_left) > 0 {
-		dg.SendDecoupledMsg(types.DockerTimestamp(player_left[1]), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
+		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_left[1])), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
 	}
 
 	if captain := RegexCaptainFinished.FindStringSubmatch(line); len(captain) > 0 {
 		shipname := captain[2]
-		timestamp := types.DockerTimestamp(captain[1])
-		msg := fmt.Sprintf("[%s] ship %s finished its job", captain[1], captain[2])
+		timestamp := captain[1]
+		msg := fmt.Sprintf("%s ship %s finished its job", captain[1], captain[2])
+
+		logus.Debug("preparting decoupler")
+		deduplicate_jobs := func(msgs []discorder.DiscordMessage) bool {
+			for _, msg := range msgs {
+				if strings.Contains(msg.Content, "Miner05") {
+					logus.Debug("checking msg=" + msg.Content)
+				}
+
+				if otherFinishedJob := RegexCaptainFinishedPrinted.FindStringSubmatch(msg.Content); len(otherFinishedJob) > 0 {
+					other_timestamp := otherFinishedJob[1]
+					other_shipname := otherFinishedJob[2]
+					logus.Debug("found against what to match " + shipname + "," + other_shipname)
+
+					parsed_time2, err := time.Parse(time.RFC3339Nano, other_timestamp)
+					if logus.CheckWarn(err, "failed to parse other_timestamp") {
+						return false
+					}
+
+					parsed_time1, err := time.Parse(time.RFC3339Nano, timestamp)
+					if logus.CheckWarn(err, "failed to parse timestamp") {
+						return false
+					}
+
+					difference := parsed_time1.Sub(parsed_time2)
+
+					logus.Debug("parsed all preparations to decuple for " + shipname)
+					if difference < time.Second*5 && shipname == other_shipname {
+						logus.Debug("log duplicating by job_decoupler is true for shipname=" + shipname)
+						return true
+					}
+				}
+			}
+			return false
+		}
+		dedup := discorder.NewDecoupler(types.DockerTimestamp(timestamp), deduplicate_jobs)
 
 		if strings.Contains(shipname, "LAW-") {
 			logus.Info("Recognized as lawey's ship")
-			dg.SendDecoupledMsg(timestamp, fmt.Sprintf("<@302481451973214209> %s", msg), avorioner_settings.OthersChannel)
+			dg.SendDecoupledMsg(dedup, fmt.Sprintf("<@302481451973214209> %s", msg), avorioner_settings.OthersChannel)
 		} else if strings.Contains(shipname, "DARK-") {
 			logus.Info("Recognized as darkwind's ship")
-			dg.SendDecoupledMsg(timestamp, fmt.Sprintf("<@370435997974134785> %s", msg), avorioner_settings.DarkwindChannel)
+			dg.SendDecoupledMsg(dedup, fmt.Sprintf("<@370435997974134785> %s", msg), avorioner_settings.DarkwindChannel)
 		} else {
 			logus.Info("Ship is not recognized")
-			dg.SendDecoupledMsg(timestamp, msg, avorioner_settings.OthersChannel)
+			dg.SendDecoupledMsg(dedup, msg, avorioner_settings.OthersChannel)
 		}
 	}
 }
@@ -49,6 +84,7 @@ var RegexPlayerJoined *regexp.Regexp
 var RegexPlayerLeft *regexp.Regexp
 var RegexPlayerMessage *regexp.Regexp
 var RegexCaptainFinished *regexp.Regexp
+var RegexCaptainFinishedPrinted *regexp.Regexp
 
 var dg *discorder.Discorder
 
@@ -64,6 +100,7 @@ func init() {
 
 	// 2023-11-19T15:36:14.547639396Z Server: finishing Miner05 ...
 	RegexCaptainFinished = utils.InitRegexExpression(`([0-9-:Z.T]+) Server\: finishing ([^ ]+) \.\.\.`)
+	RegexCaptainFinishedPrinted = utils.InitRegexExpression(`([0-9-:Z.T]+) ship ([^ ]+) finished its job`)
 
 	dg = discorder.NewClient()
 }

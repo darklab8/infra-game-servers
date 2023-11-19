@@ -15,19 +15,19 @@ func reactToEvent(line string) {
 	// logus.Info("sending= " + line)
 
 	if player_joined := RegexPlayerJoined.FindStringSubmatch(line); len(player_joined) > 0 {
-		dg.SendDecoupledMsg(types.DockerTimestamp(player_joined[1]), fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
+		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_joined[1])), fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
 	}
 
 	if player_message := RegexPlayerMessage.FindStringSubmatch(line); len(player_message) > 0 {
-		dg.SendDecoupledMsg(types.DockerTimestamp(player_message[1]), fmt.Sprintf("[%s] <%s> %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
+		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_message[1])), fmt.Sprintf("[%s] <%s> %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
 	}
 
 	if player_left := RegexPlayerLeft.FindStringSubmatch(line); len(player_left) > 0 {
-		dg.SendDecoupledMsg(types.DockerTimestamp(player_left[1]), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
+		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_left[1])), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
 	}
 
 	if achivement := RegexPlayerAchievement.FindStringSubmatch(line); len(achivement) > 0 {
-		dg.SendDecoupledMsg(types.DockerTimestamp(achivement[1]), fmt.Sprintf("[%s] player %s has just earned the achievement %s", achivement[1], achivement[2], achivement[3]), shared_settings.Channel)
+		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(achivement[1])), fmt.Sprintf("[%s] player %s has just earned the achievement %s", achivement[1], achivement[2], achivement[3]), shared_settings.Channel)
 	}
 }
 

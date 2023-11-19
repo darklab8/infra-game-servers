@@ -101,7 +101,38 @@ func (d Discorder) GetLatestMessages(channelID types.DiscordChannelID) ([]Discor
 
 /////
 
-func (dg Discorder) SendDecoupledMsg(timestamp types.DockerTimestamp, msg string, channel types.DiscordChannelID) {
+type deduplicator struct {
+	repeatCheckers []func(msgs []DiscordMessage) bool
+}
+
+func NewDecoupler(timestamp types.DockerTimestamp, repeatCheckers ...func(msgs []DiscordMessage) bool) *deduplicator {
+
+	defaultTimestampDecoupler := func(msgs []DiscordMessage) bool {
+		for _, message := range msgs {
+			if strings.Contains(message.Content, string(timestamp)) {
+				return true
+			}
+		}
+		return false
+	}
+
+	repeatCheckers = append(repeatCheckers, defaultTimestampDecoupler)
+	d := &deduplicator{
+		repeatCheckers: repeatCheckers,
+	}
+	return d
+}
+
+func (d *deduplicator) isDuplicated(msgs []DiscordMessage) bool {
+	for _, checker := range d.repeatCheckers {
+		if checker(msgs) {
+			return true
+		}
+	}
+	return false
+}
+
+func (dg Discorder) SendDecoupledMsg(deduplicator *deduplicator, msg string, channel types.DiscordChannelID) {
 	// Docker timestamp is having precise timestamp up to milliseconds
 	// good enough for decoupling
 	logus.Info("sent_message= " + msg)
@@ -113,10 +144,8 @@ func (dg Discorder) SendDecoupledMsg(timestamp types.DockerTimestamp, msg string
 		return
 	}
 
-	for _, message := range msgs {
-		if strings.Contains(message.Content, string(timestamp)) {
-			return
-		}
+	if deduplicator.isDuplicated(msgs) {
+		return
 	}
 
 	dg.SengMessage(channel, msg)
