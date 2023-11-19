@@ -52,16 +52,16 @@ var dg *discorder.Discorder
 
 func init() {
 	// 2023-11-19T14:47:40.550983131Z <Server> Player Anarchist joined the galaxy
-	RegexPlayerJoined = utils.InitRegexExpression(`([0-9-:Z.T]+) <Server> Player (\w+) joined the galaxy`)
+	RegexPlayerJoined = utils.InitRegexExpression(`([0-9-:Z.T]+) <Server> Player ([^ ]+) joined the galaxy`)
 
 	// 2023-11-19T16:45:12.858565589Z <Anarchist> some msg
-	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) <(\w+)> (.*)`)
+	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) <([^ ]+)> (.*)`)
 
 	// 2023-11-19T03:04:10.619815347Z <Server> Player Anarchist left the galaxy
-	RegexPlayerLeft = utils.InitRegexExpression(`([0-9-:Z.T]+) <Server> Player (\w+) left the galaxy`)
+	RegexPlayerLeft = utils.InitRegexExpression(`([0-9-:Z.T]+) <Server> Player ([^ ]+) left the galaxy`)
 
 	// 2023-11-19T15:36:14.547639396Z Server: finishing Miner05 ...
-	RegexCaptainFinished = utils.InitRegexExpression(`([0-9-:Z.T]+) Server\: finishing ([A-Za-z-]+) \.\.\.`)
+	RegexCaptainFinished = utils.InitRegexExpression(`([0-9-:Z.T]+) Server\: finishing ([^ ]+) \.\.\.`)
 
 	dg = discorder.NewClient()
 }

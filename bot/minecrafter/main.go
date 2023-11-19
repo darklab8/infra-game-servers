@@ -40,17 +40,17 @@ var dg *discorder.Discorder
 
 func init() {
 	// [2023-11-19T17:46:44.985025057Z] [18:35:28] [Server thread/INFO]: darkwind joined the game
-	RegexPlayerJoined = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: (\w+) joined the game`)
+	RegexPlayerJoined = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: ([^ ]+) joined the game`)
 
 	// [2023-11-19T17:46:44.985025057Z] [18:40:21] [Server thread/INFO]: <darkwind> writing something
 	// captured=[18:40:38] [Server thread/INFO]: <darkwind> bla bla bla
-	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: <(\w+)> (.*)`)
+	RegexPlayerMessage = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: <([^ ]+)> (.*)`)
 
 	// [2023-11-19T17:46:44.985025057Z] [18:35:31] [Server thread/INFO]: darkwind left the game
-	RegexPlayerLeft = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: (\w+) left the game`)
+	RegexPlayerLeft = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: ([^ ]+) left the game`)
 
 	// [2023-11-19T17:46:44.985025057Z] [18:39:57] [Server thread/INFO]: darkwind has just earned the achievement [Taking Inventory]
-	RegexPlayerAchievement = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: (\w+) has just earned the achievement ([\[\]\w\s]+)`)
+	RegexPlayerAchievement = utils.InitRegexExpression(`([0-9-:Z.T]+) \[[0-9-:]+\] \[Server thread\/INFO\]\: ([^ ]+) has just earned the achievement ([\[\]\w\s]+)`)
 
 	dg = discorder.NewClient()
 }

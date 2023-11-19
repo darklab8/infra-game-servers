@@ -45,7 +45,7 @@ locals {
 module "minecrafter" {
   source      = "../modules/gamebot"
   image       = "minecrafter"
-  tag_version = "v0.7"
+  tag_version = "v0.11"
   env_list = [
     "DISCORD_BOT_TOKEN=${local.minecrafter_secrets["DISCORD_BOT_TOKEN"]}",
     "DISCORD_CHANNEL_ID=869888658033999873",
