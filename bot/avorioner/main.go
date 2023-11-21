@@ -16,15 +16,15 @@ import (
 func reactToEvent(line string) {
 	// // logus.Info("sending= " + line)
 	if player_joined := RegexPlayerJoined.FindStringSubmatch(line); len(player_joined) > 0 {
-		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_joined[1])), fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
+		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(types.DockerTimestamp(player_joined[1])), fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
 	}
 
 	if player_message := RegexPlayerMessage.FindStringSubmatch(line); len(player_message) > 0 && player_message[2] != "Server" {
-		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_message[1])), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
+		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(types.DockerTimestamp(player_message[1])), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
 	}
 
 	if player_left := RegexPlayerLeft.FindStringSubmatch(line); len(player_left) > 0 {
-		dg.SendDecoupledMsg(discorder.NewDecoupler(types.DockerTimestamp(player_left[1])), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
+		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(types.DockerTimestamp(player_left[1])), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
 	}
 
 	if captain := RegexCaptainFinished.FindStringSubmatch(line); len(captain) > 0 {
@@ -32,7 +32,7 @@ func reactToEvent(line string) {
 		timestamp := captain[1]
 		msg := fmt.Sprintf("%s ship %s finished its job", captain[1], captain[2])
 
-		logus.Debug("preparting decoupler")
+		logus.Debug("preparting deduplicater")
 		deduplicate_jobs := func(msgs []discorder.DiscordMessage) bool {
 			for _, msg := range msgs {
 				if strings.Contains(msg.Content, "Miner05") {
@@ -58,24 +58,27 @@ func reactToEvent(line string) {
 
 					logus.Debug("parsed all preparations to decuple for " + shipname)
 					if difference < time.Second*5 && shipname == other_shipname {
-						logus.Debug("log duplicating by job_decoupler is true for shipname=" + shipname)
+						logus.Debug("log duplicating by is true for shipname=" + shipname)
 						return true
 					}
 				}
 			}
 			return false
 		}
-		dedup := discorder.NewDecoupler(types.DockerTimestamp(timestamp), deduplicate_jobs)
+		dedup := discorder.NewDeduplicater(types.DockerTimestamp(timestamp), deduplicate_jobs)
 
 		if strings.Contains(shipname, "LAW-") {
 			logus.Info("Recognized as lawey's ship")
-			dg.SendDecoupledMsg(dedup, fmt.Sprintf("<@302481451973214209> %s", msg), avorioner_settings.OthersChannel)
+			dg.SendDeduplicatedMsg(dedup, fmt.Sprintf("<@302481451973214209> %s", msg), avorioner_settings.OthersChannel)
+		} else if strings.Contains(shipname, "CPM-") {
+			logus.Info("Recognized as couden's ship")
+			dg.SendDeduplicatedMsg(dedup, fmt.Sprintf("<@328587807071272970> %s", msg), avorioner_settings.OthersChannel)
 		} else if strings.Contains(shipname, "DARK-") {
 			logus.Info("Recognized as darkwind's ship")
-			dg.SendDecoupledMsg(dedup, fmt.Sprintf("<@370435997974134785> %s", msg), avorioner_settings.DarkwindChannel)
+			dg.SendDeduplicatedMsg(dedup, fmt.Sprintf("<@370435997974134785> %s", msg), avorioner_settings.DarkwindChannel)
 		} else {
 			logus.Info("Ship is not recognized")
-			dg.SendDecoupledMsg(dedup, msg, avorioner_settings.OthersChannel)
+			dg.SendDeduplicatedMsg(dedup, msg, avorioner_settings.OthersChannel)
 		}
 	}
 }
