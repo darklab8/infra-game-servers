@@ -1,7 +1,7 @@
 module "avorion_server" {
   source       = "../modules/hetzner_server"
   environment  = "production"
-  server_power = "cpx31"
+  server_power = "ccx23"
   name         = "avorion"
   ssh_keys = [
     module.key.darklab_id
@@ -29,7 +29,7 @@ provider "docker" {
 
 resource "docker_image" "avorion" {
   provider     = docker.avorion
-  name         = "rfvgyhn/avorion:2.3.1.40236"
+  name         = "darkwind8/avorion:2.3.2"
   keep_locally = true
 }
 
