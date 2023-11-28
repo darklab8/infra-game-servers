@@ -98,7 +98,7 @@ module "avorioner" {
   }
   source      = "../modules/gamebot"
   image       = "avorioner"
-  tag_version = "v0.14"
+  tag_version = "v0.15"
   env_list = [
     "DISCORD_BOT_TOKEN=${local.avorioner_secrets["DISCORD_BOT_TOKEN"]}",
     "DISCORD_CHANNEL_ID=1099023902887399474",
