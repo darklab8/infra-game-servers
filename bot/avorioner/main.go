@@ -31,10 +31,9 @@ func reactToEvent(line string) {
 			discorder.NewRepeatChecker(types.DockerTimestamp(player_left[1]))), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
 	}
 
-	if strings.Contains(line, "Behemoth") {
+	if behemoth := RegexBehemoth.FindStringSubmatch(line); len(behemoth) > 0 {
 		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
-			discorder.NewRepeatChecker(types.Stringing(line)),
-		), line, shared_settings.Channel)
+			discorder.NewRepeatChecker(types.DockerTimestamp(behemoth[1]))), fmt.Sprintf("[%s] <> The Behemoth %s", behemoth[1], behemoth[2]), shared_settings.Channel)
 	}
 
 	if captain := RegexCaptainFinished.FindStringSubmatch(line); len(captain) > 0 {
@@ -105,6 +104,8 @@ var RegexPlayerMessage *regexp.Regexp
 var RegexCaptainFinished *regexp.Regexp
 var RegexCaptainFinishedPrinted *regexp.Regexp
 
+var RegexBehemoth *regexp.Regexp
+
 var dg *discorder.Discorder
 
 func init() {
@@ -121,11 +122,13 @@ func init() {
 	RegexCaptainFinished = utils.InitRegexExpression(`([0-9-:Z.T]+) Server\: finishing ([^ ]+) \.\.\.`)
 	RegexCaptainFinishedPrinted = utils.InitRegexExpression(`([0-9-:Z.T]+) ship ([^ ]+) finished its job`)
 
+	RegexBehemoth = utils.InitRegexExpression(`([0-9-:Z.T]+) <> The Behemoth (.*)`)
+
 	dg = discorder.NewClient()
 }
 
 func main() {
-	loopDelay := time.Second * 30
+	loopDelay := time.Second * 15
 	for {
 		logus.Info("next RunBot loop for avorioner")
 		utils.ShellRunArgs(reactToEvent, loopDelay, "docker", "logs", "avorion", "--timestamps", "--tail", "100", "-f")
