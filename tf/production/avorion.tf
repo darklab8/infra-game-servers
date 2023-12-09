@@ -29,7 +29,7 @@ provider "docker" {
 
 resource "docker_image" "avorion" {
   provider     = docker.avorion
-  name         = "darkwind8/avorion:2.3.2"
+  name         = "rfvgyhn/avorion:2.4.1.40926"
   keep_locally = true
 }
 
