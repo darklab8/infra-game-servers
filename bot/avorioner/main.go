@@ -16,15 +16,25 @@ import (
 func reactToEvent(line string) {
 	// // logus.Info("sending= " + line)
 	if player_joined := RegexPlayerJoined.FindStringSubmatch(line); len(player_joined) > 0 {
-		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(types.DockerTimestamp(player_joined[1])), fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
+		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
+			discorder.NewRepeatChecker(types.DockerTimestamp(player_joined[1]))),
+			fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
 	}
 
 	if player_message := RegexPlayerMessage.FindStringSubmatch(line); len(player_message) > 0 && player_message[2] != "Server" {
-		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(types.DockerTimestamp(player_message[1])), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
+		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
+			discorder.NewRepeatChecker(types.DockerTimestamp(player_message[1]))), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
 	}
 
 	if player_left := RegexPlayerLeft.FindStringSubmatch(line); len(player_left) > 0 {
-		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(types.DockerTimestamp(player_left[1])), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
+		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
+			discorder.NewRepeatChecker(types.DockerTimestamp(player_left[1]))), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
+	}
+
+	if strings.Contains(line, "Behemoth") {
+		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
+			discorder.NewRepeatChecker(types.Stringing(line)),
+		), line, shared_settings.Channel)
 	}
 
 	if captain := RegexCaptainFinished.FindStringSubmatch(line); len(captain) > 0 {
@@ -65,7 +75,7 @@ func reactToEvent(line string) {
 			}
 			return false
 		}
-		dedup := discorder.NewDeduplicater(types.DockerTimestamp(timestamp), deduplicate_jobs)
+		dedup := discorder.NewDeduplicater(discorder.NewRepeatChecker(types.DockerTimestamp(timestamp)), deduplicate_jobs)
 
 		if strings.Contains(shipname, "LAW-") {
 			logus.Info("Recognized as lawey's ship")

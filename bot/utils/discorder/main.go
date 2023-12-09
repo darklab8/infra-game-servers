@@ -105,18 +105,23 @@ type deduplicator struct {
 	repeatCheckers []func(msgs []DiscordMessage) bool
 }
 
-func NewDeduplicater(timestamp types.DockerTimestamp, repeatCheckers ...func(msgs []DiscordMessage) bool) *deduplicator {
+type Stringable interface {
+	ToString() string
+}
 
-	defaultTimestampDeduplicater := func(msgs []DiscordMessage) bool {
+func NewRepeatChecker[T Stringable](obj T) func(msgs []DiscordMessage) bool {
+	DeduplicatorByTime := func(msgs []DiscordMessage) bool {
 		for _, message := range msgs {
-			if strings.Contains(message.Content, string(timestamp)) {
+			if strings.Contains(message.Content, obj.ToString()) {
 				return true
 			}
 		}
 		return false
 	}
+	return DeduplicatorByTime
+}
 
-	repeatCheckers = append(repeatCheckers, defaultTimestampDeduplicater)
+func NewDeduplicater(repeatCheckers ...func(msgs []DiscordMessage) bool) *deduplicator {
 	d := &deduplicator{
 		repeatCheckers: repeatCheckers,
 	}
