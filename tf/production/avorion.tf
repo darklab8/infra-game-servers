@@ -29,11 +29,11 @@ provider "docker" {
 
 resource "docker_image" "avorion" {
   provider     = docker.avorion
-  name         = "rfvgyhn/avorion:2.4.1.40926"
+  name         = "rfvgyhn/avorion:2.4.2.40992"
   keep_locally = true
 }
 
-# docker run -d -it --name avorion -p 27000:27000 -p 27000:27000/udp -p 27003:27003/udp -p 27020:27020/udp -p 27021:27021/udp -v /var/lib/avorion:/home/steam/.avorion/galaxies/avorion_galaxy rfvgyhn/avorion:2.3.1.40236
+# docker run -d -it --name avorion -p 27000:27000 -p 27000:27000/udp -p 27003:27003/udp -p 27020:27020/udp -p 27021:27021/udp -v /var/lib/avorion:/home/steam/.avorion/galaxies/avorion_galaxy rfvgyhn/avorion:2.4.2.40992
 resource "docker_container" "avorion" {
   provider = docker.avorion
   name     = "avorion"
