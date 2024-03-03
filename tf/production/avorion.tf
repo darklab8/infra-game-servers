@@ -4,7 +4,7 @@ module "avorion_server" {
   server_power = "ccx23"
   name         = "avorion"
   ssh_keys = [
-    module.key.darklab_id
+    module.ssh_key.id
   ]
 }
 

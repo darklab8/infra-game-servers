@@ -20,3 +20,10 @@ tasks:
   client:mount:
     cmds:
       - sudo mount $(pwd)/mods $CLIENT_FOLDER/mods
+
+  docker:tag:
+    cmds:
+      - darklab_arm docker tag docker.io/library/server_modded_1710-app darkwind8/minecraft:modded-1.7.10-.v0.1.0
+      - darklab_arm docker push darkwind8/minecraft:modded-1.7.10-.v0.1.0
+
+
