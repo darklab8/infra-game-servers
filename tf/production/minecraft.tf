@@ -1,12 +1,11 @@
 
 module "server" {
-  source       = "../modules/hetzner_server"
+  source       = "../../../infra/tf/modules/hetzner_server"
   environment  = "production"
-  server_power = "cpx21"
-  name         = "minecraft"
-  ssh_keys = [
-    module.ssh_key.id
-  ]
+  name         = "infra-legacy-minecraft"
+  hardware     = "cpx21"
+  ssh_key_id   = module.ssh_key.id
+  datacenter   = "ash-dc1" 
 }
 
 module "dns" {

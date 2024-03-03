@@ -1,11 +1,10 @@
 module "avorion_server" {
-  source       = "../modules/hetzner_server"
+  source       = "../../../infra/tf/modules/hetzner_server"
   environment  = "production"
-  server_power = "ccx23"
-  name         = "avorion"
-  ssh_keys = [
-    module.ssh_key.id
-  ]
+  hardware     = "ccx23"
+  name         = "infra-legacy-avorion"
+  ssh_key_id   = module.ssh_key.id
+  datacenter   = "ash-dc1" 
 }
 
 module "avorion_dns" {
