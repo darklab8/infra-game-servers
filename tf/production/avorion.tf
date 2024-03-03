@@ -24,7 +24,7 @@ provider "docker" {
 
 resource "docker_image" "avorion" {
   provider     = docker.avorion
-  name         = "rfvgyhn/avorion:2.4.2.40992"
+  name         = "rfvgyhn/avorion:2.4.3.41156"
   keep_locally = true
 }
 
