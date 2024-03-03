@@ -7,8 +7,7 @@ x-definitions:
 version: "3.8"
 services:
   minecrafter:
-    build:
-      context: .
+    build: .
     container_name: minecrafter
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro

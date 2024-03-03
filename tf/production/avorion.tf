@@ -9,7 +9,7 @@ module "avorion_server" {
 }
 
 module "avorion_dns" {
-  source = "../modules/cloudflare_dns"
+  source = "../../../infra/tf/modules/cloudflare_dns"
   zone   = local.zone
   dns_records = [
     {
