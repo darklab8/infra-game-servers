@@ -1,9 +1,10 @@
 package logus
 
 import (
-	"darklab_minecraft/bot/utils/types"
 	"fmt"
 	"log/slog"
+
+	"github.com/darklab8/infra-game-servers/bot/utils/types"
 )
 
 func logGroupFiles() slog.Attr {

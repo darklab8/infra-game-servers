@@ -8,11 +8,12 @@ interface
 package discorder
 
 import (
-	"darklab_minecraft/bot/utils/logus"
-	"darklab_minecraft/bot/utils/shared_settings"
-	"darklab_minecraft/bot/utils/types"
 	"strings"
 	"time"
+
+	"github.com/darklab8/infra-game-servers/bot/utils/logus"
+	"github.com/darklab8/infra-game-servers/bot/utils/shared_settings"
+	"github.com/darklab8/infra-game-servers/bot/utils/types"
 
 	"github.com/bwmarrin/discordgo"
 )

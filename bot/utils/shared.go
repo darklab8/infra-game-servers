@@ -2,11 +2,12 @@ package utils
 
 import (
 	"context"
-	"darklab_minecraft/bot/utils/logus"
 	"fmt"
 	"os/exec"
 	"strings"
 	"time"
+
+	"github.com/darklab8/infra-game-servers/bot/utils/logus"
 )
 
 type logCapturer struct {

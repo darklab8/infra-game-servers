@@ -11,12 +11,13 @@ Optionally as single value can be added slogGroup
 */
 
 import (
-	"darklab_minecraft/bot/utils/types"
 	"fmt"
 	"log/slog"
 	"os"
 	"path/filepath"
 	"runtime"
+
+	"github.com/darklab8/infra-game-servers/bot/utils/types"
 )
 
 var (

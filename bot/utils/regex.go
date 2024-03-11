@@ -1,10 +1,11 @@
 package utils
 
 import (
-	"darklab_minecraft/bot/utils/logus"
-	"darklab_minecraft/bot/utils/types"
 	"regexp"
 	"runtime"
+
+	"github.com/darklab8/infra-game-servers/bot/utils/logus"
+	"github.com/darklab8/infra-game-servers/bot/utils/types"
 )
 
 func GetCurrentFile() types.FilePath {

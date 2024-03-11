@@ -1,9 +1,10 @@
 package shared_settings
 
 import (
-	"darklab_minecraft/bot/utils/logus"
-	"darklab_minecraft/bot/utils/types"
 	"os"
+
+	"github.com/darklab8/infra-game-servers/bot/utils/logus"
+	"github.com/darklab8/infra-game-servers/bot/utils/types"
 )
 
 var Channel types.DiscordChannelID

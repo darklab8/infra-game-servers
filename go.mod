@@ -1,4 +1,4 @@
-module darklab_minecraft
+module github.com/darklab8/infra-game-servers
 
 go 1.21.1
 
