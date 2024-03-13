@@ -1,8 +1,9 @@
 version: "3"
 
 env:
-  tag_version: v0.18
-  repo: avorioner
+  tag_version: v0.12
+  repo: minecrafter
+  DOCKER_HOST: ssh://root@darklab-node-arm:22
 
 tasks:
   docker:build:

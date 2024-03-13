@@ -1,11 +1,7 @@
 
 module "server" {
-  source       = "../../../infra/tf/modules/hetzner_server"
-  environment  = "production"
-  name         = "infra-legacy-minecraft"
-  hardware     = "cpx21"
-  ssh_key_id   = module.ssh_key.id
-  datacenter   = "ash-dc1" 
+  source       = "../../../infra/tf/modules/hetzner_server/data"
+  name         = "node-arm"
 }
 
 module "dns" {
@@ -37,7 +33,7 @@ locals {
 module "minecrafter" {
   source      = "../modules/gamebot"
   image       = "minecrafter"
-  tag_version = "v0.11"
+  tag_version = "v0.12"
   env_list = [
     "DISCORD_BOT_TOKEN=${local.minecrafter_secrets["DISCORD_BOT_TOKEN"]}",
     "DISCORD_CHANNEL_ID=869888658033999873",
