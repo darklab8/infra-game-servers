@@ -89,6 +89,9 @@ func reactToEvent(line string) {
 		} else if strings.Contains(shipname, "GSS-") {
 			logus.Info("Recognized as Groshyr's ship")
 			dg.SendDeduplicatedMsg(dedup, fmt.Sprintf("<@1066759106377035907> %s", msg), avorioner_settings.OthersChannel)
+		} else if strings.Contains(shipname, "[STR]") {
+			logus.Info("Recognized as Stranbrun's ship")
+			dg.SendDeduplicatedMsg(dedup, fmt.Sprintf("<@406535886285701120> %s", msg), avorioner_settings.OthersChannel)
 		} else if strings.Contains(shipname, "DARK-") {
 			logus.Info("Recognized as darkwind's ship")
 			dg.SendDeduplicatedMsg(dedup, fmt.Sprintf("<@370435997974134785> %s", msg), avorioner_settings.DarkwindChannel)
