@@ -22,4 +22,3 @@ import mods.projecte.KleinStar;
 #KleinStar.addShapeless(<ProjectE:item.pe_klein_star:2>, [<ProjectE:item.pe_klein_star:1>, <ProjectE:item.pe_klein_star:1>]);
 
 #KleinStar.removeRecipe(<ProjectE:item.pe_klein_star:2>);
-
