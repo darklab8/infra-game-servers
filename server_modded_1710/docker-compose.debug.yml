@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-    stdin_open: true 
+    stdin_open: true
     tty: true
     container_name: minecraft
     volumes:
@@ -51,4 +51,4 @@ services:
         source: ./data/usercache.json
         target: /code/usercache.json
     ports:
-      - 25565:25565
+      - 25575:25565
