@@ -1,7 +1,7 @@
 
 module "server" {
-  source       = "../../../infra/tf/modules/hetzner_server/data"
-  name         = "node-arm"
+  source = "../../../infra/tf/modules/hetzner_server/data"
+  name   = "node-arm"
 }
 
 module "dns" {

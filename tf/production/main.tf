@@ -1,5 +1,5 @@
 module "ssh_key" {
-   source       = "../../../infra/tf/modules/hetzner_ssh_key/data"
+  source = "../../../infra/tf/modules/hetzner_ssh_key/data"
 }
 
 locals {
