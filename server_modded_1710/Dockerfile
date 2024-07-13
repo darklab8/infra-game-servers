@@ -18,5 +18,5 @@ COPY server/forge-1.7.10-10.13.4.1614-1.7.10-universal.jar server/minecraft_serv
 # https://mohistmc.com/
 # https://mohistmc.com/download
 # https://mohistmc.com/builds/1.7.10/Mohist-1.7.10-46-server.jar
-CMD java -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar
+CMD java -Dfile.encoding=UTF-8 -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar
 
