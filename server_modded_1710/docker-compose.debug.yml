@@ -23,9 +23,6 @@ services:
       - type: bind
         source: ./configs/ops.json
         target: /code/ops.json
-      - type: bind
-        source: ./configs/log4j2.xml
-        target: /code/log4j2.xml
       - ./plugins/RecipeManager/recipes:/code/plugins/RecipeManager/recipes
       - ./plugins/RecipeManager/books:/code/plugins/RecipeManager/books
       - ./scripts:/code/scripts
