@@ -1,11 +1,15 @@
 version: "3"
 
 env:
-  tag_version: v0.20
+  tag_version: v0.21
   repo: avorioner
-  # DOCKER_HOST: ssh://root@darklab-node-arm:22
+  # DOCKER_HOST: ssh://root@darklab:22
 
 tasks:
+  docker:ps:
+    cmds:
+      - docker ps
+
   docker:build:
     cmds:
       - docker build --tag darkwind8/${repo}:${tag_version} --target ${repo}-runner .

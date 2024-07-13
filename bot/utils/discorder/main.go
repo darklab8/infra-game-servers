@@ -8,6 +8,7 @@ interface
 package discorder
 
 import (
+	"fmt"
 	"strings"
 	"time"
 
@@ -117,6 +118,14 @@ func NewRepeatChecker[T Stringable](obj T) func(msgs []DiscordMessage) bool {
 				return true
 			}
 		}
+
+		if parsed_time1, err := time.Parse(time.RFC3339Nano, obj.ToString()); err == nil {
+			fmt.Println("managed to parse time for repeat checker")
+			if parsed_time1.Before(time.Now().Add(-10 * time.Minute)) {
+				return true
+			}
+		}
+
 		return false
 	}
 	return DeduplicatorByTime
