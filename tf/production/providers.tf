@@ -20,19 +20,19 @@ terraform {
   }
 }
 
-data "aws_ssm_parameter" "hcloud_key" {
-  name = "/terraform/hetzner/production"
+data "external" "secrets_cloudflare" {
+  program = ["pass", "api/personal/terraform/cloudflare/dd84ai"]
+}
+
+data "external" "secrets_hetzner" {
+  program = ["pass", "api/personal/terraform/hetzner/production"]
 }
 
 provider "hcloud" {
-  token = data.aws_ssm_parameter.hcloud_key.value
-}
-
-data "aws_ssm_parameter" "cloudflare_key" {
-  name = "/terraform/cloudflare/dd84ai"
+  token = data.external.secrets_hetzner.result["token"]
 }
 
 provider "cloudflare" {
-  api_token = data.aws_ssm_parameter.cloudflare_key.value
+  api_token = data.external.secrets_cloudflare.result["token"]
 }
 

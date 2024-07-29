@@ -22,12 +22,12 @@ provider "docker" {
   ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-i", "~/.ssh/id_rsa.darklab"]
 }
 
-data "aws_ssm_parameter" "minecrafter" {
-  name = "/terraform/hetzner/minecrafter/production"
+data "external" "secrets_minecrafter" {
+  program = ["pass", "api/personal/terraform/hetzner/minecrafter/production"]
 }
 
 locals {
-  minecrafter_secrets = nonsensitive(jsondecode(data.aws_ssm_parameter.minecrafter.value))
+  minecrafter_secrets = nonsensitive(data.external.secrets_minecrafter.result)
 }
 
 module "minecrafter" {

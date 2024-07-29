@@ -83,12 +83,12 @@ resource "docker_container" "avorion" {
   }
 }
 
-data "aws_ssm_parameter" "avorioner" {
-  name = "/terraform/hetzner/avorioner/production"
+data "external" "secrets_avorioner" {
+  program = ["pass", "api/personal/terraform/hetzner/avorioner/production"]
 }
 
 locals {
-  avorioner_secrets = nonsensitive(jsondecode(data.aws_ssm_parameter.avorioner.value))
+  avorioner_secrets = nonsensitive(data.external.secrets_avorioner.result)
 }
 
 module "avorioner" {
