@@ -23,7 +23,7 @@ provider "docker" {
 }
 
 data "external" "secrets_minecrafter" {
-  program = ["pass", "api/personal/terraform/hetzner/minecrafter/production"]
+  program = ["pass", "personal/terraform/hetzner/minecrafter/production"]
 }
 
 locals {

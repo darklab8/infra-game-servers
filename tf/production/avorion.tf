@@ -84,7 +84,7 @@ resource "docker_container" "avorion" {
 }
 
 data "external" "secrets_avorioner" {
-  program = ["pass", "api/personal/terraform/hetzner/avorioner/production"]
+  program = ["pass", "personal/terraform/hetzner/avorioner/production"]
 }
 
 locals {
