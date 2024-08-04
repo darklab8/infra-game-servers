@@ -1,1 +1,0 @@
-copy to data folder before server start

@@ -2,27 +2,36 @@ version: "3"
 
 env:
   tag_version: v0.21
-  repo: avorioner
-  # DOCKER_HOST: ssh://root@darklab:22
+  bot_repo: avorioner
+  DOCKER_HOST: ssh://root@darklab:22
+  MINECRAFT_TAG: modded-1.7.10-v0.3.1
 
 tasks:
   docker:ps:
     cmds:
       - docker ps
 
-  docker:build:
+  bot:docker:build:
     cmds:
-      - docker build --tag darkwind8/${repo}:${tag_version} --target ${repo}-runner .
-
-  docker:push:
+      - docker build --tag darkwind8/${bot_repo}:${tag_version} --target ${bot_repo}-runner .
+  bot:docker:push:
     cmds:
-      - docker push darkwind8/${repo}:${tag_version}
-
-  docker:run:
+      - docker push darkwind8/${bot_repo}:${tag_version}
+  bot:docker:run:
     cmds:
-      - docker run -it darkwind8/${repo}:${tag_version}
+      - docker run -it darkwind8/${bot_repo}:${tag_version}
 
-  docker:buildpush:
+  minecraft:docker:build:
+    cmds:
+      - docker build --tag darkwind8/minecraft:${MINECRAFT_TAG} ./server_modded_1710
+  minecraft:docker:push:
+    cmds:
+      - docker push darkwind8/minecraft:${MINECRAFT_TAG}
+  minecraft:docker:run:
+    cmds:
+      - docker run -it darkwind8/minecraft:${MINECRAFT_TAG}
+
+  bot:docker:buildpush:
     cmds:
       - task: docker:build
       - task: docker:push

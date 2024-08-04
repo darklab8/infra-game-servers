@@ -18,6 +18,7 @@ module "dns" {
 }
 
 provider "docker" {
+  alias    = "minecraft"
   host     = "ssh://root@${module.server.ipv4_address}:22"
   ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-i", "~/.ssh/id_rsa.darklab"]
 }
@@ -31,6 +32,9 @@ locals {
 }
 
 module "minecrafter" {
+  providers = {
+    docker = docker.minecraft
+  }
   source      = "../modules/gamebot"
   image       = "minecrafter"
   tag_version = "v0.21"
@@ -39,4 +43,20 @@ module "minecrafter" {
     "DISCORD_CHANNEL_ID=869888658033999873",
     "DARKBOT_LOG_LEVEL=WARN"
   ]
+}
+
+resource "docker_image" "minecraft" {
+  provider     = docker.minecraft
+  name         = "darkwind8/minecraft:modded-1.7.10-v0.3.1"
+  # keep_locally = true
+}
+
+module "minecraft" {
+  source = "../modules/minecraft"
+  providers = {
+    docker.minecraft : docker.minecraft,
+  }
+  image_id = docker_image.minecraft.image_id
+  restart  = "always"
+  data_path = "/var/lib/darklab/darklab_minecraft/server_modded_1710/data"
 }

@@ -1,1 +1,1 @@
-for changes in git way only. provide in read only way to server.
+must be copied to var.data_path/data/configs for first container start

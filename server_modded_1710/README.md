@@ -12,3 +12,10 @@
 
 - /register password password
 - /login password
+
+### folders:
+
+libraries are colleced on server start
+
+when dev server is running, update with
+- docker cp minecraft:/code/libraries .

@@ -44,9 +44,6 @@ services:
         source: ./configs/config/witchery.cfg
         target: /code/config/witchery.cfg
 
-      # for custom stuff u wish to copy out of running server
-      - ./data/output:/code/output
-
       - type: bind
         source: ./data/usercache.json
         target: /code/usercache.json
