@@ -9,17 +9,17 @@ locals {
 
 resource "docker_image" "minecraft" {
   provider = docker.minecraft
-  name         = "darkwind8/minecraft:modded-1.7.10-v0.3.1"
-  # name     = "darkwind8/minecraft:modded-1.7.10-develop"
+  # name         = "darkwind8/minecraft:modded-1.7.10-v0.3.1"
+  name     = "darkwind8/minecraft:modded-1.7.10-develop"
 
-  # build {
-  #   context    = local.minecraft_folder
-  #   dockerfile = "Dockerfile"
-  #   label = {
-  #     author : "andrei.novoselov"
-  #     hash : module.folder_hash.hash
-  #   }
-  # }
+  build {
+    context    = local.minecraft_folder
+    dockerfile = "Dockerfile"
+    label = {
+      author : "andrei.novoselov"
+      hash : module.folder_hash.hash
+    }
+  }
   keep_locally = true
 }
 
@@ -40,8 +40,10 @@ module "minecraft" {
 }
 
 locals {
-  data_path = abspath("${path.module}/data_prod")
+  data_path = abspath("${path.module}/data")
 }
+# mkdir tf/dev/data && cp -r server_modded_1710/configs tf/dev/data
+# before first launch
 
 # data "external" "secrets_minecrafter" {
 #   program = ["pass", "personal/terraform/hetzner/minecrafter/production"]
