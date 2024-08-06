@@ -14,7 +14,7 @@ variable "data_path" {
 }
 
 resource "docker_container" "minecraft" {
-  provider     = docker.minecraft
+  provider = docker.minecraft
 
   name  = "minecraft"
   image = var.image_id

@@ -5,6 +5,7 @@ env:
   bot_repo: avorioner
   DOCKER_HOST: ssh://root@darklab:22
   MINECRAFT_TAG: modded-1.7.10-v0.4.0
+  CRONTAB_TAG: modded-1.7.10-crontab-v0.1.0
 
 tasks:
   docker:ps:
@@ -35,6 +36,11 @@ tasks:
     cmds:
       - task: docker:build
       - task: docker:push
+
+  crontab:docker:buildpush:
+    cmds:
+      - docker build --tag darkwind8/minecraft:${CRONTAB_TAG} ./server_modded_1710/crontab
+      - docker push darkwind8/minecraft:${CRONTAB_TAG}
 
   shell:production:
     cmds:

@@ -10,7 +10,7 @@ locals {
 resource "docker_image" "minecraft" {
   provider = docker.minecraft
   # name         = "darkwind8/minecraft:modded-1.7.10-v0.3.1"
-  name     = "darkwind8/minecraft:modded-1.7.10-develop"
+  name = "darkwind8/minecraft:modded-1.7.10-develop"
 
   build {
     context    = local.minecraft_folder
@@ -26,7 +26,15 @@ resource "docker_image" "minecraft" {
 module "folder_hash" {
   source    = "../modules/folder_hash"
   directory = "${path.module}/../../server_modded_1710"
+  exclusions = [
+    for path in sort(fileset("${path.module}/../../server_modded_1710/crontab", "**")) :
+    "crontab/${path}"
+  ]
 }
+
+# output folder_hash_paths {
+#   value = module.folder_hash.paths
+# }
 
 module "minecraft" {
   source = "../modules/minecraft"
