@@ -47,7 +47,7 @@ module "minecrafter" {
 
 resource "docker_image" "minecraft" {
   provider     = docker.minecraft
-  name         = "darkwind8/minecraft:modded-1.7.10-v0.3.2"
+  name         = "darkwind8/minecraft:modded-1.7.10-v0.4.0"
   # keep_locally = true
 }
 
@@ -57,6 +57,6 @@ module "minecraft" {
     docker.minecraft : docker.minecraft,
   }
   image_id = docker_image.minecraft.image_id
-  restart  = "always"
+  restart  = "on-failure"
   data_path = "/var/lib/darklab/darklab_minecraft/server_modded_1710/data"
 }

@@ -4,7 +4,7 @@ env:
   tag_version: v0.21
   bot_repo: avorioner
   DOCKER_HOST: ssh://root@darklab:22
-  MINECRAFT_TAG: modded-1.7.10-v0.3.2
+  MINECRAFT_TAG: modded-1.7.10-v0.4.0
 
 tasks:
   docker:ps:
