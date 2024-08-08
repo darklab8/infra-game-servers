@@ -18,8 +18,9 @@
 
 // ================================================================================
 //#MARKER REMOVE SHAPED
-recipes.removeShaped(<DraconicEvolution:draconicCore>, [[<ore:ingotGold>, <ore:ingotDraconium>, <ore:ingotGold>], [<ore:ingotDraconium>, <ore:gemDiamond>, <ore:ingotDraconium>], [<ore:ingotGold>, <ore:ingotDraconium>, <ore:ingotGold>]]);
-recipes.removeShaped(<DraconicEvolution:draconicCore>, [[<ore:ingotGold>, <ore:ingotDraconium>, <ore:ingotGold>], [<ore:ingotDraconium>, <ore:gemDiamond>, <ore:ingotDraconium>], [<ore:ingotGold>, <ore:ingotDraconium>, <ore:ingotGold>]]);
+recipes.removeShaped(<DraconicEvolution:draconicCore>, [[<minecraft:gold_ingot>, <DraconicEvolution:draconiumIngot>, <minecraft:gold_ingot>], [<DraconicEvolution:draconiumIngot>, <ore:gemDiamond>, <ore:ingotDraconium>], [<minecraft:gold_ingot>, <ore:ingotDraconium>, <ore:ingotGold>]]);
+recipes.removeShaped(<DraconicEvolution:awakenedCore>, [[<ore:ingotDraconiumAwakened>, <DraconicEvolution:wyvernCore>, <ore:ingotDraconiumAwakened>], [<DraconicEvolution:wyvernCore>, <ore:ingotDraconiumAwakened>, <DraconicEvolution:wyvernCore>], [<DraconicEvolution:draconicIngot>, <DraconicEvolution:wyvernCore>, <ore:ingotDraconiumAwakened>]]);
+recipes.removeShaped(<DraconicEvolution:wyvernCore>, [[<ore:ingotDraconium>, <DraconicEvolution:draconicCore>, <ore:ingotDraconium>], [<DraconicEvolution:draconicCore>, <minecraft:nether_star>, <DraconicEvolution:draconicCore>], [<DraconicEvolution:draconiumIngot>, <DraconicEvolution:draconicCore>, <ore:ingotDraconium>]]);
 
 // ================================================================================
 //#MARKER ADD
@@ -29,6 +30,9 @@ recipes.removeShaped(<DraconicEvolution:draconicCore>, [[<ore:ingotGold>, <ore:i
 
 // ================================================================================
 //#MARKER ADD SHAPED
+recipes.addShaped(<DraconicEvolution:awakenedCore>, [[<DraconicEvolution:wyvernCore>, <AdvancedSolarPanel:asp_crafting_items:13>, <DraconicEvolution:wyvernCore>], [<Botania:manaResource:4>, <DraconicEvolution:draconicBlock>, <ThaumicTinkerer:kamiResource:2>], [<DraconicEvolution:wyvernCore>, <GalaxySpace:item.HeavyDutyPlate:2>, <DraconicEvolution:wyvernCore>]]);
+recipes.addShaped(<DraconicEvolution:wyvernCore>, [[<ore:ingotVoid>, <DraconicEvolution:draconicCore>, <AdvancedSolarPanel:asp_crafting_items:4>], [<DraconicEvolution:draconicCore>, <minecraft:nether_star>, <DraconicEvolution:draconicCore>], [<ore:ingotElvenElementium>, <DraconicEvolution:draconicCore>, <AWWayofTime:demonicSlate>]]);
+recipes.addShaped(<DraconicEvolution:draconicCore>, [[<ore:ingotDraconium>, <ore:ingotManasteel>, <DraconicEvolution:draconiumIngot>], [<ore:ingotThaumium>, <BloodArsenal:blood_infused_iron>, <ore:ingotRefinedObsidian>], [<ore:ingotDraconium>, <IC2:itemPartIridium>, <ore:ingotDraconium>]]);
 recipes.addShaped(<IC2:reactorHeatSwitchDiamond:0>, [[<IC2:reactorHeatSwitchDiamond:1>]]);
 recipes.addShaped(<IC2:reactorCoolantSix:0>, [[<IC2:reactorCoolantSix:1>]]);
 
