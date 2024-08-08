@@ -29,3 +29,6 @@ recipes.removeShaped(<DraconicEvolution:draconicCore>, [[<ore:ingotGold>, <ore:i
 
 // ================================================================================
 //#MARKER ADD SHAPED
+recipes.addShaped(<IC2:reactorHeatSwitchDiamond:0>, [[<IC2:reactorHeatSwitchDiamond:1>]]);
+recipes.addShaped(<IC2:reactorCoolantSix:0>, [[<IC2:reactorCoolantSix:1>]]);
+
