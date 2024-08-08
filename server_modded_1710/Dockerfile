@@ -13,8 +13,7 @@ RUN rm mods/tlskincape*.jar mods/OptiFine*.jar | true
 RUN ls mods
 COPY server/forge-1.7.10-10.13.4.1614-1.7.10-universal.jar server/minecraft_server.1.7.10.jar server/eula.txt /code/
 
-COPY config/evilcraft.cfg /code/config/evilcraft.cfg
-COPY config/witchery.cfg /code/config/witchery.cfg
+COPY config /code/config
 
 COPY configs/usercache.json \
     configs/banned-ips.json \ 
