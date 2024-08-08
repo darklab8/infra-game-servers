@@ -48,7 +48,7 @@ module "minecraft" {
 }
 
 locals {
-  data_path = abspath("${path.module}/data")
+  data_path = abspath("${path.module}/data_prod/data")
 }
 # mkdir tf/dev/data && cp -r server_modded_1710/configs tf/dev/data
 # before first launch
