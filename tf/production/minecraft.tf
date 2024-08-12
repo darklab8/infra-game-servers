@@ -25,7 +25,7 @@ provider "docker" {
 
 resource "docker_image" "minecraft" {
   provider = docker.minecraft
-  name     = "darkwind8/minecraft:modded-1.7.10-v0.4.4"
+  name     = "darkwind8/minecraft:modded-1.7.10-v0.4.5"
   # keep_locally = true
 }
 

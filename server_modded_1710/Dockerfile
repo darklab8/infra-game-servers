@@ -33,4 +33,4 @@ COPY plugins/RecipeManager/books /code/plugins/RecipeManager/book
 # https://mohistmc.com/
 # https://mohistmc.com/download
 # https://mohistmc.com/builds/1.7.10/Mohist-1.7.10-46-server.jar
-CMD java -Dfile.encoding=UTF-8 -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar
+CMD java -Dfml.readTimeout=120 -Dfile.encoding=UTF-8 -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar

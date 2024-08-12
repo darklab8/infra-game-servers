@@ -4,7 +4,7 @@ env:
   tag_version: v0.21
   bot_repo: avorioner
   DOCKER_HOST: ssh://root@darklab:22
-  MINECRAFT_TAG: modded-1.7.10-v0.4.4
+  MINECRAFT_TAG: modded-1.7.10-v0.4.5
   CRONTAB_TAG: modded-1.7.10-crontab-v0.1.1
 
 tasks:
