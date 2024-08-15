@@ -32,7 +32,7 @@
         "command": "sh -c 'echo \"/say SERVER RESTART IN 10 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
     },
     {
-        "schedule": "55 186 * * *",
+        "schedule": "55 18 * * *",
         "command": "sh -c 'echo \"/say SERVER RESTART IN 5 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
     },
     {

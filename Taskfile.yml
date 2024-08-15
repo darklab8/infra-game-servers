@@ -5,7 +5,7 @@ env:
   bot_repo: avorioner
   DOCKER_HOST: ssh://root@darklab:22
   MINECRAFT_TAG: modded-1.7.10-v0.4.7
-  CRONTAB_TAG: modded-1.7.10-crontab-v0.1.2
+  CRONTAB_TAG: modded-1.7.10-crontab-v0.1.3
 
 tasks:
   docker:ps:
