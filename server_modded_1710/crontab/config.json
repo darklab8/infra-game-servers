@@ -1,9 +1,5 @@
 [
     {
-        "schedule": "45 6 * * *",
-        "command": "sh -c 'echo \"/say SERVER RESTART IN 15 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
-    },
-    {
         "schedule": "50 6 * * *",
         "command": "sh -c 'echo \"/say SERVER RESTART IN 10 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
     },
@@ -29,6 +25,34 @@
     },
     {
         "schedule": "0 7 * * *",
+        "command": "sh -c 'echo \"stop\" | socat EXEC:\"docker attach minecraft\",pty STDIN' ; sleep 30 ; docker start minecraft"
+    },
+    {
+        "schedule": "50 18 * * *",
+        "command": "sh -c 'echo \"/say SERVER RESTART IN 10 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "55 186 * * *",
+        "command": "sh -c 'echo \"/say SERVER RESTART IN 5 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "56 18 * * *",
+        "command": "sh -c 'echo \"/say SERVER RESTART IN 4 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "57 18 * * *",
+        "command": "sh -c 'echo \"/say SERVER RESTART IN 3 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "58 18 * * *",
+        "command": "sh -c 'echo \"/say SERVER RESTART IN 2 MINUTES\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "59 18 * * *",
+        "command": "sh -c 'echo \"/say SERVER RESTART IN 1 MINUTE\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "0 19 * * *",
         "command": "sh -c 'echo \"stop\" | socat EXEC:\"docker attach minecraft\",pty STDIN' ; sleep 30 ; docker start minecraft"
     }
 ]
