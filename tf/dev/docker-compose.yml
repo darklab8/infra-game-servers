@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: ../../server_modded_1710
+    stdin_open: true
+    tty: true
+    container_name: minecraft
+    volumes:
+      # data
+      - ./data/logs:/code/logs
+      - ./data/world:/code/world
+      - ./data/plugins/LoginSecurity:/code/plugins/LoginSecurity
+      - ./data/plugins/WorldGuard:/code/plugins/WorldGuard
+      - ./data/plugins/WorldEdit:/code/plugins/WorldEdit
+      - ./data/asm/:/code/asm
+      - ./data/mohist-config/:/code/mohist-config
+    
+      - type: bind
+        source: ./data/configs/whitelist.json
+        target: /code/whitelist.json
+      - type: bind
+        source: ./data/configs/banned-ips.json
+        target: /code/banned-ips.json
+      - type: bind
+        source: ./data/configs/banned-players.json
+        target: /code/banned-players.json
+      - type: bind
+        source: ./data/configs/ops.json
+        target: /code/ops.json
+      - type: bind
+        source: ./data/configs/usercache.json
+        target: /code/usercache.json
+    ports:
+      - 25575:25565

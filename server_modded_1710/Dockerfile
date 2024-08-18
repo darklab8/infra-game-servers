@@ -28,9 +28,19 @@ COPY libraries /code/libraries
 COPY plugins/RecipeManager/recipes /code/plugins/RecipeManager/recipes
 COPY plugins/RecipeManager/books /code/plugins/RecipeManager/book
 
-# taken from 
-# https://github.com/MohistMC/Mohist/tree/1.7.10
-# https://mohistmc.com/
-# https://mohistmc.com/download
-# https://mohistmc.com/builds/1.7.10/Mohist-1.7.10-46-server.jar
-CMD java -Xmx10G -Dfml.readTimeout=120 -Dfile.encoding=UTF-8 -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar
+# Optional auth server. 
+COPY server/authlib-injector-snapshot.jar .
+# - Turn on javaagent line then in CMD
+# - requires running drasl https://github.com/unmojang/drasl#installation
+#   - or any other authlib-injector based auth server https://github.com/fn2006/PollyMC/wiki/Alternative-Auth-Servers
+# - Requires in server properties to turn on online mode as true
+# other info for auth https://drasl.unmojang.org/
+# https://github.com/yushijinhun/authlib-injector/blob/develop/README.en.md#deploy
+
+CMD java \
+    -Xmx10G \
+    -Dfml.readTimeout=120 \
+    -Dfile.encoding=UTF-8 \
+    -javaagent:/code/authlib-injector-snapshot.jar=http://drasl.dd84ai.com:25585 \
+    -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar
+
