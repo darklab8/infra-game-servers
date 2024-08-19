@@ -23,7 +23,14 @@ for docker-compose of a current minecraft server only:
 
 WARNING: development locally is made in amd64, but final docker images are saved as arm64 (because arm64 servers are twice cheaper at Herzner where we host them)
 
-terraform (assuming u have configured secrets in pass):
+terraform (assuming u have configured secrets in pass, which would be looking in json parsable format):
+
+```sh
+$ pass personal/terraform/hetzner/minecrafter/production
+{
+  "DISCORD_BOT_TOKEN": "1111111111111111111111.33333.222222222222222222222222"
+}
+```
 - `cd tf/production && terragrunt apply`
 
 ## Connecting as client
