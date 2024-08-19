@@ -13,6 +13,11 @@ variable "data_path" {
   description = "path to"
 }
 
+variable authlib_auth_server {
+  type = string
+  default = ""
+}
+
 resource "docker_container" "minecraft" {
   provider = docker.minecraft
 
@@ -21,6 +26,10 @@ resource "docker_container" "minecraft" {
 
   tty        = true
   stdin_open = true
+
+  env = toset([
+    "AUTHLIB_AUTH_SERVER=${var.authlib_auth_server}",
+  ])
 
   # Data.
 

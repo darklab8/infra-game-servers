@@ -25,7 +25,7 @@ provider "docker" {
 
 resource "docker_image" "minecraft" {
   provider = docker.minecraft
-  name     = "darkwind8/minecraft:modded-1.7.10-v0.5.0"
+  name     = "darkwind8/minecraft:modded-1.7.10-v0.5.2"
   # keep_locally = true
 }
 
@@ -53,4 +53,5 @@ module "minecraft" {
   depends_on = [
     module.minecraft_init_data,
   ]
+  authlib_auth_server = "http://drasl.dd84ai.com:25585"
 }

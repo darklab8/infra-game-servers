@@ -2,14 +2,14 @@ version: "3"
 
 env:
   CLIENT_FOLDER: /home/naa/.minecraft
-  COMPOSE_F: docker-compose.debug.yml
+  COMPOSE_F: docker-compose.yml
 
 tasks:
   server:debug:rerun:
     cmds:
-      - sudo rm -R data/world | true
-      - sudo rm -R data/plugins | true
-      - sudo rm -R data/logs | true
+      - sudo rm -R data | true
+      - mkdir data
+      - cp -r configs data
       - echo $COMPOSE_F
       - docker-compose -f $COMPOSE_F down ;  docker-compose -f $COMPOSE_F build ; docker-compose -f $COMPOSE_F run --rm --service-ports app
 
@@ -20,10 +20,3 @@ tasks:
   client:mount:
     cmds:
       - sudo mount $(pwd)/mods $CLIENT_FOLDER/mods
-
-  docker:tag:
-    cmds:
-      - darklab_arm docker tag docker.io/library/server_modded_1710-app darkwind8/minecraft:modded-1.7.10-.v0.1.0
-      - darklab_arm docker push darkwind8/minecraft:modded-1.7.10-.v0.1.0
-
-

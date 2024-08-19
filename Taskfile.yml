@@ -4,7 +4,8 @@ env:
   tag_version: v0.21
   bot_repo: avorioner
   DOCKER_HOST: ssh://root@darklab:22
-  MINECRAFT_TAG: modded-1.7.10-v0.5.0
+  MINECRAFT_TAG: modded-1.7.10-v0.5.2
+  MINECRAFT_LATEST: modded-1.7.10-latest
   CRONTAB_TAG: modded-1.7.10-crontab-v0.2.0
 
 tasks:
@@ -28,6 +29,8 @@ tasks:
   minecraft:docker:push:
     cmds:
       - docker push darkwind8/minecraft:${MINECRAFT_TAG}
+      - docker tag darkwind8/minecraft:${MINECRAFT_TAG} darkwind8/minecraft:${MINECRAFT_LATEST}
+      - docker push darkwind8/minecraft:${MINECRAFT_LATEST}
   minecraft:docker:run:
     cmds:
       - docker run -it darkwind8/minecraft:${MINECRAFT_TAG}

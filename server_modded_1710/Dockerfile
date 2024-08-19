@@ -39,10 +39,5 @@ COPY server/authlib-injector-snapshot.jar .
 # other info for auth https://drasl.unmojang.org/
 # https://github.com/yushijinhun/authlib-injector/blob/develop/README.en.md#deploy
 
-CMD java \
-    -Xmx10G \
-    -Dfml.readTimeout=120 \
-    -Dfile.encoding=UTF-8 \
-    -javaagent:/code/authlib-injector-snapshot.jar=http://drasl.dd84ai.com:25585 \
-    -jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar
-
+COPY entrypoint.py .
+CMD python3 entrypoint.py
