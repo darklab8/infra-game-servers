@@ -25,7 +25,11 @@
     },
     {
         "schedule": "0 7 * * *",
-        "command": "sh -c 'echo \"stop\" | socat EXEC:\"docker attach minecraft\",pty STDIN' ; sleep 30 ; docker start minecraft"
+        "command": "sh -c 'echo \"stop\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "1 7 * * *",
+        "command": "docker start minecraft"
     },
     {
         "schedule": "50 17 * * *",
@@ -53,6 +57,10 @@
     },
     {
         "schedule": "0 18 * * *",
-        "command": "sh -c 'echo \"stop\" | socat EXEC:\"docker attach minecraft\",pty STDIN' ; sleep 30 ; docker start minecraft"
+        "command": "sh -c 'echo \"stop\" | socat EXEC:\"docker attach minecraft\",pty STDIN'"
+    },
+    {
+        "schedule": "1 18 * * *",
+        "command": "docker start minecraft"
     }
 ]
