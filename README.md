@@ -7,17 +7,26 @@ list of game servers
 - Avorion
 - Minecraft from 1.7.10 to 1.12.2 (modded and vanilla)
 
+### Description for minecraft server_modded_1710
+
+- It is dockerized modded minecraft for 1.7.10 version, built in minimalistic in terms of dependencies to make it happen (not including into this evaluation amount of mods).
+- The minecraft dockerization was made with attempt to follow best practices of docker where all dependencies are actually indeed frozen at a build time.
+    - WIth disabled internet connection, it was tested to be still initializing server and working correctly :]
+    - This is made in mind that this minecraft will be used in long term for game sessions lasting a year at least or longer
+    - this also makes possible properly having iac/gitops stuff regarding it applied.
+
 ## Getting started with development
+
+for docker-compose of a current minecraft server only (try this first and connect with client):
+
+- `cd server_modded_1710`
+- `task server:debug:rerun`
 
 for terraform version for everything:
 
 - Assuming u have right secrets in [pass](https://www.passwordstore.org/) storage
 - Just `cd tf/dev` and `terragrunt apply` everything, it should raise modded minecraft server 1.7.10 and rest of infrastructure
 
-for docker-compose of a current minecraft server only:
-
-- `cd server_modded_1710`
-- `task server:debug:rerun`
 
 ## Deploying
 
