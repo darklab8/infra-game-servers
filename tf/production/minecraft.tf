@@ -34,7 +34,7 @@ locals {
 }
 
 module "minecraft_init_data" {
-  source = "../modules/ansible_init_data"
+  source = "../modules/minecraft/init_data"
   is_local = false
   data_path = local.data_path
   hostname  = "darklab"
