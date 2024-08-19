@@ -22,6 +22,13 @@ resource "docker_container" "minecraft_crontab" {
     type      = "bind"
   }
 
+  # persisting logs for easier view
+  volumes {
+    read_only = false
+    container_path = "/var/log/crontab"
+    host_path      = "/var/log/crontab"
+  }
+
   lifecycle {
     ignore_changes = [
       memory_swap,
