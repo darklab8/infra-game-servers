@@ -1,5 +1,6 @@
+
 data "external" "secrets_minecrafter" {
-  program = ["pass", "personal/terraform/hetzner/minecrafter/production"]
+  program = ["pass", "personal/terraform/hetzner/minecrafter/staging"]
 }
 
 locals {
@@ -8,7 +9,16 @@ locals {
 
 resource "docker_image" "bot" {
   provider = docker.minecraft
-  name         = "darkwind8/minecrafter:v0.21"
+  name = "darkwind8/minecrafter:develop"
+
+  build {
+    context    = abspath("${path.module}/../..")
+    dockerfile = "Dockerfile"
+    target      = "minecrafter-runner"
+    label = {
+      hash : module.folder_hash.hash
+    }
+  }
   keep_locally = true
 }
 
@@ -21,7 +31,7 @@ module "minecrafter" {
   container_name = "minecrafter"
   env_list = [
     "DISCORD_BOT_TOKEN=${local.minecrafter_secrets["DISCORD_BOT_TOKEN"]}",
-    "DISCORD_CHANNEL_ID=869888658033999873",
+    "DISCORD_CHANNEL_ID=1175586231145467935",
     "DARKBOT_LOG_LEVEL=WARN"
   ]
 }

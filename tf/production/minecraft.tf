@@ -29,6 +29,18 @@ resource "docker_image" "minecraft" {
   # keep_locally = true
 }
 
+locals {
+  data_path = "/var/lib/darklab/darklab_minecraft/server_modded_1710/data"
+}
+
+module "minecraft_init_data" {
+  source = "../modules/ansible_init_data"
+  is_local = false
+  data_path = local.data_path
+  hostname  = "darklab"
+  image_id = docker_image.minecraft.image_id
+}
+
 module "minecraft" {
   source = "../modules/minecraft"
   providers = {
@@ -36,5 +48,9 @@ module "minecraft" {
   }
   image_id  = docker_image.minecraft.image_id
   restart   = "on-failure"
-  data_path = "/var/lib/darklab/darklab_minecraft/server_modded_1710/data"
+  data_path = local.data_path
+
+  depends_on = [
+    module.minecraft_init_data,
+  ]
 }

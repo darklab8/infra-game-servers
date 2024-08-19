@@ -1,15 +1,8 @@
-# Create a docker image resource
-# -> docker pull nginx:latest
-resource "docker_image" "bot" {
-  name         = "darkwind8/${var.image}:${var.tag_version}"
-  keep_locally = true
-}
-
-variable "image" {
+variable container_name {
   type = string
 }
 
-variable "tag_version" {
+variable "image_id" {
   type = string
 }
 
@@ -23,8 +16,8 @@ variable "env_list" {
 }
 
 resource "docker_container" "minecrafter" {
-  name  = var.image
-  image = docker_image.bot.image_id
+  name  = var.container_name
+  image = var.image_id
 
   env = var.env_list
 

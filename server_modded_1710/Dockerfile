@@ -23,6 +23,8 @@ COPY configs/usercache.json \
     configs/server.properties \
     ./
 
+COPY configs configs_template
+
 COPY scripts /code/scripts
 COPY libraries /code/libraries
 COPY plugins/RecipeManager/recipes /code/plugins/RecipeManager/recipes

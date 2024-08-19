@@ -1,0 +1,7 @@
+version: "3"
+
+# Do we really need it?
+tasks:
+  install:
+    cmds:
+      - ansible-galaxy collection install community.general
