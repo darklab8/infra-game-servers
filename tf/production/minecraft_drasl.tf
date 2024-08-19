@@ -12,3 +12,5 @@ module "dns_drasl" {
 }
 
 # TODO add DRASL it here.
+# based on https://github.com/unmojang/drasl#installation
+# Somehow ;)
