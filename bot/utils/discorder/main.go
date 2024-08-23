@@ -147,21 +147,24 @@ func (d *deduplicator) isDuplicated(msgs []DiscordMessage) bool {
 	return false
 }
 
-func (dg Discorder) SendDeduplicatedMsg(deduplicator *deduplicator, msg string, channel types.DiscordChannelID) {
-	// Docker timestamp is having precise timestamp up to milliseconds
-	// good enough for deduplicating
-	logus.Info("sent_message= " + msg)
+func (dg Discorder) SendDeduplicatedMsg(deduplicator *deduplicator, msg string, channels ...types.DiscordChannelID) {
 
-	msgs, err := dg.GetLatestMessages(channel)
+	for _, channel := range channels {
+		// Docker timestamp is having precise timestamp up to milliseconds
+		// good enough for deduplicating
+		logus.Info("sent_message= " + msg)
 
-	logus.CheckError(err, "failed to get discord latest msgs")
-	if err != nil {
-		return
+		msgs, err := dg.GetLatestMessages(channel)
+
+		logus.CheckError(err, "failed to get discord latest msgs")
+		if err != nil {
+			continue
+		}
+
+		if deduplicator.isDuplicated(msgs) {
+			continue
+		}
+
+		dg.SengMessage(channel, msg)
 	}
-
-	if deduplicator.isDuplicated(msgs) {
-		return
-	}
-
-	dg.SengMessage(channel, msg)
 }

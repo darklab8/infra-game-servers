@@ -1,46 +1,52 @@
 version: "3"
 
 env:
-  tag_version: v0.21
-  bot_repo: avorioner
+  tag_version: v0.22
+  bot_repo: minecrafter
   DOCKER_HOST: ssh://root@darklab:22
-  MINECRAFT_TAG: modded-1.7.10-v0.5.2
+  MINECRAFT_TAG: modded-1.7.10-v0.5.4
   MINECRAFT_LATEST: modded-1.7.10-latest
-  CRONTAB_TAG: modded-1.7.10-crontab-v0.2.0
+  CRONTAB_TAG: modded-1.7.10-crontab-v0.2.1
 
 tasks:
-  docker:ps:
+  ps:
     cmds:
       - docker ps
 
-  bot:docker:build:
+  bot:build:
     cmds:
       - docker build --tag darkwind8/${bot_repo}:${tag_version} --target ${bot_repo}-runner .
-  bot:docker:push:
+  bot:push:
     cmds:
       - docker push darkwind8/${bot_repo}:${tag_version}
-  bot:docker:run:
+  bot:run:
     cmds:
       - docker run -it darkwind8/${bot_repo}:${tag_version}
 
-  minecraft:docker:build:
+  minecraft:build:
     cmds:
       - docker build --tag darkwind8/minecraft:${MINECRAFT_TAG} ./server_modded_1710
-  minecraft:docker:push:
+  minecraft:push:
     cmds:
       - docker push darkwind8/minecraft:${MINECRAFT_TAG}
       - docker tag darkwind8/minecraft:${MINECRAFT_TAG} darkwind8/minecraft:${MINECRAFT_LATEST}
       - docker push darkwind8/minecraft:${MINECRAFT_LATEST}
-  minecraft:docker:run:
+
+  minecraft:buildpush:
+    cmds:
+      - task: minecraft:build
+      - task: minecraft:push
+
+  minecraft:run:
     cmds:
       - docker run -it darkwind8/minecraft:${MINECRAFT_TAG}
 
-  bot:docker:buildpush:
+  bot:buildpush:
     cmds:
       - task: docker:build
       - task: docker:push
 
-  crontab:docker:buildpush:
+  crontab:buildpush:
     cmds:
       - docker build --tag darkwind8/minecraft:${CRONTAB_TAG} ./server_modded_1710/crontab
       - docker push darkwind8/minecraft:${CRONTAB_TAG}

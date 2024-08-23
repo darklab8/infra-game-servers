@@ -1,0 +1,26 @@
+---
+- hosts: all
+  # become: yes
+  gather_facts: false
+
+  tasks:
+    - name: Testing it works
+      shell: echo "Executing ansible"
+
+    - name: Create a directory if it does not exist
+      ansible.builtin.file:
+        path: "{{ data_path }}"
+        state: directory
+        mode: "0755"
+
+    - stat: path="{{ data_path }}/configs"
+      register: configs_stats
+
+    - block:
+        - shell: docker run --name minecraft_init --detach {{ image_id }}
+        - shell: docker container cp minecraft_init:/code/configs_template '{{ data_path }}/configs'
+        - shell: docker stop minecraft_init
+      always:
+        - shell: docker rm minecraft_init | true
+
+      when: configs_stats.stat.exists == False

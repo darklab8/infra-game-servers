@@ -1,6 +1,6 @@
 resource "docker_image" "minecraft_crontab" {
   provider     = docker.minecraft
-  name         = "darkwind8/minecraft:modded-1.7.10-crontab-v0.2.0"
+  name         = "darkwind8/minecraft:modded-1.7.10-crontab-v0.2.1"
   keep_locally = true
 }
 

@@ -58,6 +58,6 @@ module "minecraft" {
 }
 
 locals {
-  data_path = abspath("${path.module}/data")
+  data_path = abspath("${path.module}/data_prod")
 }
 

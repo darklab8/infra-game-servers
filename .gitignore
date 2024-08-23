@@ -2,3 +2,6 @@
 launch.
 backup_*
 *.backup
+data_prod/
+data/
+code/

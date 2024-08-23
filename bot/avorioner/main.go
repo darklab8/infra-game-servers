@@ -19,22 +19,22 @@ func reactToEvent(line string) {
 	if player_joined := RegexPlayerJoined.FindStringSubmatch(line); len(player_joined) > 0 {
 		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
 			discorder.NewRepeatChecker(types.DockerTimestamp(player_joined[1]))),
-			fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channel)
+			fmt.Sprintf("[%s] player %s joined the server", player_joined[1], player_joined[2]), shared_settings.Channels...)
 	}
 
 	if player_message := RegexPlayerMessage.FindStringSubmatch(line); len(player_message) > 0 && player_message[2] != "Server" {
 		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
-			discorder.NewRepeatChecker(types.DockerTimestamp(player_message[1]))), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channel)
+			discorder.NewRepeatChecker(types.DockerTimestamp(player_message[1]))), fmt.Sprintf("[%s] <%s>: %s", player_message[1], player_message[2], player_message[3]), shared_settings.Channels...)
 	}
 
 	if player_left := RegexPlayerLeft.FindStringSubmatch(line); len(player_left) > 0 {
 		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
-			discorder.NewRepeatChecker(types.DockerTimestamp(player_left[1]))), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channel)
+			discorder.NewRepeatChecker(types.DockerTimestamp(player_left[1]))), fmt.Sprintf("[%s] player %s left the server", player_left[1], player_left[2]), shared_settings.Channels...)
 	}
 
 	if behemoth := RegexBehemoth.FindStringSubmatch(line); len(behemoth) > 0 {
 		dg.SendDeduplicatedMsg(discorder.NewDeduplicater(
-			discorder.NewRepeatChecker(types.DockerTimestamp(behemoth[1]))), fmt.Sprintf("[%s] <> The Behemoth %s", behemoth[1], behemoth[2]), shared_settings.Channel)
+			discorder.NewRepeatChecker(types.DockerTimestamp(behemoth[1]))), fmt.Sprintf("[%s] <> The Behemoth %s", behemoth[1], behemoth[2]), shared_settings.Channels...)
 	}
 
 	if captain := RegexCaptainFinished.FindStringSubmatch(line); len(captain) > 0 {

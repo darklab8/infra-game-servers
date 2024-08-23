@@ -29,6 +29,10 @@
     },
     {
         "schedule": "1 7 * * *",
+        "command": "docker stop minecraft"
+    },
+    {
+        "schedule": "2 7 * * *",
         "command": "docker start minecraft"
     },
     {
@@ -61,6 +65,10 @@
     },
     {
         "schedule": "1 18 * * *",
+        "command": "docker stop minecraft"
+    },
+    {
+        "schedule": "2 18 * * *",
         "command": "docker start minecraft"
     }
 ]
