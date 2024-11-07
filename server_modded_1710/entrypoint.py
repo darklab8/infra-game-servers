@@ -29,7 +29,7 @@ final_command = " ".join(
         f"-Xmx{max_ram}",
         f"-Dfml.readTimeout={read_timeout}",
         "-Dfile.encoding=UTF-8",
-        authlib_auth_server_arg,
+        # authlib_auth_server_arg,
         # debugger
     ] + jmx_debugger_args + [    
         "-jar forge-1.7.10-10.13.4.1614-1.7.10-universal.jar",

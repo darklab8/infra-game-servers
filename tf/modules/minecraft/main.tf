@@ -105,6 +105,12 @@ resource "docker_container" "minecraft" {
     protocol = "tcp"
   }
 
+  ports {
+    external = 25861
+    internal = 25861
+    ip       = "127.0.0.1"
+  }
+
   lifecycle {
     ignore_changes = [
       memory_swap,
