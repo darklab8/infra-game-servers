@@ -15,7 +15,7 @@ variable "env_list" {
   type = list(string)
 }
 
-resource "docker_container" "minecrafter" {
+resource "docker_container" "gamebot" {
   name  = var.container_name
   image = var.image_id
 

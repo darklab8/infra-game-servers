@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  drasl:
+    image: unmojang/drasl
+    ports:
+      - "25585:25585"
+    volumes:
+      - ./config:/etc/drasl
+      - ./data:/var/lib/drasl

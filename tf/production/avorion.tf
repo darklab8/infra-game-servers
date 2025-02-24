@@ -7,32 +7,36 @@
 #   environment = "production"
 # }
 
-# module "avorion_dns" {
-#   source = "../../../infra/tf/modules/cloudflare_dns"
-#   zone   = local.zone
-#   dns_records = [
-#     {
-#       type    = "A"
-#       value   = module.avorion_server.ipv4_address
-#       name    = "production.avorion.${local.zone}"
-#       proxied = false
-#     },
-#   ]
-# }
+locals {
+    avorion_ip = "37.27.42.32"
+}
 
-# provider "docker" {
-#   alias    = "avorion"
-#   host     = "ssh://root@${module.avorion_server.ipv4_address}:22"
-#   ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-i", "~/.ssh/id_rsa.darklab"]
-# }
+module "avorion_dns" {
+  source = "../../../infra/tf/modules/cloudflare_dns"
+  zone   = local.zone
+  dns_records = [
+    {
+      type    = "A"
+      value   = local.avorion_ip
+      name    = "production.avorion.${local.zone}"
+      proxied = false
+    },
+  ]
+}
 
-# resource "docker_image" "avorion" {
-#   provider     = docker.avorion
-#   name         = "rfvgyhn/avorion:2.5.2.41507"
-#   keep_locally = true
-# }
+provider "docker" {
+  alias    = "avorion"
+  host     = "ssh://root@${local.avorion_ip}:22"
+  ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-i", "~/.ssh/id_rsa.darklab"]
+}
 
-# # docker run -d -it --name avorion -p 27000:27000 -p 27000:27000/udp -p 27003:27003/udp -p 27020:27020/udp -p 27021:27021/udp -v /var/lib/avorion:/home/steam/.avorion/galaxies/avorion_galaxy rfvgyhn/avorion:2.4.2.40992
+resource "docker_image" "avorion" {
+  provider     = docker.avorion
+  name         = "rfvgyhn/avorion:2.5.5.42018"
+  keep_locally = true
+}
+
+# # docker run -d -it --name avorion -p 27000:27000 -p 27000:27000/udp -p 27003:27003/udp -p 27020:27020/udp -p 27021:27021/udp -v /var/lib/avorion:/home/steam/.avorion/galaxies/avorion_galaxy rfvgyhn/avorion:2.5.5.42018
 # resource "docker_container" "avorion" {
 #   provider = docker.avorion
 #   name     = "avorion"

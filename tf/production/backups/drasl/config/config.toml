@@ -1,0 +1,16 @@
+# Drasl default config file
+EnableBackgroundEffect = false
+
+# Example: drasl.example.com
+Domain = "drasl.dd84ai.com"
+
+# Example: https://drasl.example.com
+BaseURL = "http://drasl.dd84ai.com:25585"
+
+# List of usernames who automatically become admins of the Drasl instance
+DefaultAdmins = ["darkwindadm"]
+
+[RegistrationNewPlayer]
+Allow = true
+AllowChoosingUUID = true
+RequireInvite = true

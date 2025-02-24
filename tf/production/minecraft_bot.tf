@@ -1,10 +1,10 @@
-data "external" "secrets_minecrafter" {
-  program = ["pass", "personal/terraform/hetzner/minecrafter/production"]
-}
+# data "external" "secrets_minecrafter" {
+#   program = ["pass", "personal/terraform/hetzner/minecrafter/production"]
+# }
 
-locals {
-  minecrafter_secrets = nonsensitive(data.external.secrets_minecrafter.result)
-}
+# locals {
+#   minecrafter_secrets = nonsensitive(data.external.secrets_minecrafter.result)
+# }
 
 # resource "docker_image" "bot" {
 #   provider = docker.minecraft
