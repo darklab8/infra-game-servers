@@ -15,7 +15,7 @@ tasks:
 
   server:debug:run:
     cmds:
-      - docker-compose -f $COMPOSE_F down ; docker-compose -f $COMPOSE_F run --rm --service-ports app
+      - docker-compose -f $COMPOSE_F down ; docker-compose -f $COMPOSE_F build && docker-compose -f $COMPOSE_F run --rm --service-ports app
 
   client:mount:
     cmds:

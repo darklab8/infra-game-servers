@@ -31,7 +31,7 @@ COPY plugins/RecipeManager/recipes /code/plugins/RecipeManager/recipes
 COPY plugins/RecipeManager/books /code/plugins/RecipeManager/book
 
 # Optional auth server. 
-COPY server/authlib-injector-snapshot.jar .
+# COPY server/authlib-injector-snapshot.jar .
 # - Turn on javaagent line then in CMD
 # - requires running drasl https://github.com/unmojang/drasl#installation
 #   - or any other authlib-injector based auth server https://github.com/fn2006/PollyMC/wiki/Alternative-Auth-Servers
