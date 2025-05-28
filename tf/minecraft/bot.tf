@@ -12,7 +12,7 @@ resource "docker_image" "bot" {
 }
 
 module "minecrafter" {
-  source      = "../modules/gamebot"
+  source         = "../modules/gamebot"
   image_id       = docker_image.bot.image_id
   container_name = "minecrafter"
   env_list = [
