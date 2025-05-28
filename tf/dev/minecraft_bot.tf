@@ -13,7 +13,7 @@ resource "docker_image" "bot" {
   build {
     context    = abspath("${path.module}/../..")
     dockerfile = "Dockerfile"
-    target      = "minecrafter-runner"
+    target     = "minecrafter-runner"
     label = {
       hash : module.folder_hash.hash
     }
@@ -22,7 +22,7 @@ resource "docker_image" "bot" {
 }
 
 module "minecrafter" {
-  source      = "../modules/gamebot"
+  source         = "../modules/gamebot"
   image_id       = docker_image.bot.image_id
   container_name = "minecrafter"
   env_list = [

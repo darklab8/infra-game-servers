@@ -4,7 +4,7 @@ module "folder_hash_crontab" {
 }
 
 resource "docker_image" "minecraft_crontab" {
-  name     = "darkwind8/minecraft:modded-1.7.10-crontab-v0.0.1"
+  name = "darkwind8/minecraft:modded-1.7.10-crontab-v0.0.1"
 
   build {
     context    = "${local.minecraft_folder}/crontab"

@@ -1,5 +1,5 @@
 provider "docker" {
-  host  = "unix:///var/run/docker.sock"
+  host = "unix:///var/run/docker.sock"
 }
 
 locals {
@@ -33,15 +33,15 @@ module "folder_hash" {
 # }
 
 module "minecraft_init_data" {
-  source = "../modules/minecraft/init_data"
+  source    = "../modules/minecraft/init_data"
   is_local  = true
   data_path = local.data_path
   hostname  = "localhost"
-  image_id = docker_image.minecraft.image_id
+  image_id  = docker_image.minecraft.image_id
 }
 
 module "minecraft" {
-  source = "../modules/minecraft"
+  source   = "../modules/minecraft"
   image_id = docker_image.minecraft.image_id
   restart  = "no"
 

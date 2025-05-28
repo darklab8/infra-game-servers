@@ -17,7 +17,7 @@ provider "docker" {
 }
 
 resource "docker_image" "minecraft" {
-  name     = "darkwind8/modded-1.7.10-v0.6.1"
+  name = "darkwind8/modded-1.7.10-v0.6.1"
   # keep_locally = true
 }
 
@@ -34,7 +34,7 @@ locals {
 # }
 
 module "minecraft_ctr" {
-  source = "../modules/minecraft_ctr"
+  source    = "../modules/minecraft_ctr"
   image_id  = docker_image.minecraft.image_id
   restart   = "on-failure"
   data_path = local.data_path

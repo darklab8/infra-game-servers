@@ -13,8 +13,8 @@ variable "data_path" {
   description = "path to"
 }
 
-variable authlib_auth_server {
-  type = string
+variable "authlib_auth_server" {
+  type    = string
   default = ""
 }
 
