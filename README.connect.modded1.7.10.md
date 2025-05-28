@@ -1,9 +1,6 @@
 # Main instruction to connect to modded 1.7.10
 
-We use pollyMC launcher. (Optionally u can use any launcher supporting autolib-injector authentification, and ability to run easily forge 1.7.1.0)
-
-Account registration:
-- Ping me to get login and password (optionally edit your account for skin and capes at http://drasl.dd84ai.com:25585/ )
+We use pollyMC launcher. (Optionally u can use any other launcher (like TLauncher), that has ability to run easily forge 1.7.1.0)
 
 Game setup.
 - Java 1.8.0 64 bit to install and to choose ( https://www.java.com/en/download/ this one should be ok. Ensure to use 64bit version if your PC 64bit friendly (which it should be) )
@@ -13,10 +10,7 @@ Game setup.
     - Minecraft 1.7.10
     - Forge (latest) as loader
 - putting stuff from server_modded_1710/mods [in archive](https://github.com/darklab8/infra-game-servers/archive/refs/heads/master.zip) to mods folder 
-- add your account as authlib-injector account.
-    - insert chosen login, password and `http://drasl.dd84ai.com:25585/authlib-injector` for auth server
-    - turning on the game
-- adding address production.minecraft.dd84ai.com:25575
+- adding server address (ask which one)
 - If you have unstable internet connection, add to your java arguments `-Dfml.readTimeout=120` in addition, it will help you to stabilize it
 
 # if you are windows user and u have low FPS, while having powerful videocard
