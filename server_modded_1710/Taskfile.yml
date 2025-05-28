@@ -25,5 +25,5 @@ tasks:
     cmds:
       - DOCKER_HOST=ssh://minecraft docker-compose build
 
-      # DOCKER_HOST=ssh://minecraft docker tag docker.io/library/server_modded_1710-app darkwind8/modded-1.7.10-v0.6.4
-      # DOCKER_HOST=ssh://minecraft docker push darkwind8/modded-1.7.10-v0.6.4
+      # DOCKER_HOST=ssh://minecraft docker tag docker.io/library/server_modded_1710-app darkwind8/modded-1.7.10-v0.6.5
+      # DOCKER_HOST=ssh://minecraft docker push darkwind8/modded-1.7.10-v0.6.5
