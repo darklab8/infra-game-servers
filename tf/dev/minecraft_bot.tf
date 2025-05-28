@@ -8,7 +8,6 @@ locals {
 }
 
 resource "docker_image" "bot" {
-  provider = docker.minecraft
   name = "darkwind8/minecrafter:develop"
 
   build {
@@ -23,9 +22,6 @@ resource "docker_image" "bot" {
 }
 
 module "minecrafter" {
-  providers = {
-    docker = docker.minecraft
-  }
   source      = "../modules/gamebot"
   image_id       = docker_image.bot.image_id
   container_name = "minecrafter"

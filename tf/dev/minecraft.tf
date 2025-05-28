@@ -1,5 +1,4 @@
 provider "docker" {
-  alias = "minecraft"
   host  = "unix:///var/run/docker.sock"
 }
 
@@ -8,7 +7,6 @@ locals {
 }
 
 resource "docker_image" "minecraft" {
-  provider = docker.minecraft
   name = "darkwind8/minecraft:modded-1.7.10-develop"
 
   build {
@@ -44,9 +42,6 @@ module "minecraft_init_data" {
 
 module "minecraft" {
   source = "../modules/minecraft"
-  providers = {
-    docker.minecraft : docker.minecraft,
-  }
   image_id = docker_image.minecraft.image_id
   restart  = "no"
 

@@ -20,3 +20,7 @@ tasks:
   client:mount:
     cmds:
       - sudo mount $(pwd)/mods $CLIENT_FOLDER/mods
+
+  server:build:
+    cmds:
+      - DOCKER_HOST=ssh://minecraft docker-compose build

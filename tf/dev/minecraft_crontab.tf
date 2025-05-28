@@ -4,7 +4,6 @@ module "folder_hash_crontab" {
 }
 
 resource "docker_image" "minecraft_crontab" {
-  provider = docker.minecraft
   name     = "darkwind8/minecraft:modded-1.7.10-crontab-v0.0.1"
 
   build {
@@ -18,8 +17,6 @@ resource "docker_image" "minecraft_crontab" {
 }
 
 resource "docker_container" "minecraft_crontab" {
-  provider = docker.minecraft
-
   name  = "minecraft_crontab"
   image = docker_image.minecraft_crontab.image_id
 

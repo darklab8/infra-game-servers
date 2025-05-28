@@ -19,20 +19,20 @@ variable authlib_auth_server {
 }
 
 resource "docker_container" "minecraft" {
-  provider = docker.minecraft
-
   name  = "minecraft"
   image = var.image_id
 
   tty        = true
   stdin_open = true
 
-  env = toset([
-    "AUTHLIB_AUTH_SERVER=${var.authlib_auth_server}",
-  ])
+  # env = toset([
+  #   "AUTHLIB_AUTH_SERVER=${var.authlib_auth_server}",
+  # ])
 
-  # Data.
-
+  log_opts = {
+    "mode" : "non-blocking"
+    "max-buffer-size" : "500m"
+  }
   volumes {
     container_path = "/code/logs"
     host_path      = "${var.data_path}/logs"
