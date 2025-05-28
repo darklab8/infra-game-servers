@@ -6,7 +6,6 @@ Game setup.
 - Java 1.8.0 64 bit to install and to choose ( https://www.java.com/en/download/ this one should be ok. Ensure to use 64bit version if your PC 64bit friendly (which it should be) )
 - pollyMC to turn on https://github.com/fn2006/PollyMC  (pick installer in Releases)
     - Windows-MSVC-Setup version should be good if u are regular windows user
-    - PollyMC-Linux-x86_64.AppImage if u are linux user is good to use. Just download, chmod to executable and launch
 - pick in PollyMC:
     - Minecraft 1.7.10
     - Forge (latest) as loader
