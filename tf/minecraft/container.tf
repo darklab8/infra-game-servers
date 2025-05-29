@@ -17,21 +17,21 @@ provider "docker" {
 }
 
 resource "docker_image" "minecraft" {
-  name = "darkwind8/modded-1.7.10-v0.6.5"
+  name = "darkwind8/modded-1.7.10-v0.6.6a2"
   # keep_locally = true
 }
 
 locals {
-  data_path = "/var/lib/darklab/minecraft_data"
+  data_path = "/var/lib/darklab/minecraft_data2"
 }
 
-# module "minecraft_init_data" {
-#   source = "../modules/minecraft_ctr/init_data"
-#   is_local = false
-#   data_path = local.data_path
-#   hostname  = "minecraft"
-#   image_id = docker_image.minecraft.image_id
-# }
+module "minecraft_init_data" {
+  source = "../modules/minecraft_ctr/init_data"
+  is_local = false
+  data_path = local.data_path
+  hostname  = "minecraft"
+  image_id = docker_image.minecraft.image_id
+}
 
 module "minecraft_ctr" {
   source    = "../modules/minecraft_ctr"
