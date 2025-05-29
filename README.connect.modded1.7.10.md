@@ -7,6 +7,7 @@ Game setup.
 - pollyMC to turn on https://github.com/fn2006/PollyMC  (pick installer in Releases)
     - Windows-MSVC-Setup version should be good if u are regular windows user
     - PollyMC-Linux-x86_64.AppImage if u are linux user is good to use. Just download, chmod to executable and launch
+    - IF U HAVE MICROSOFT ACCOUNT, u could be wishing PolyMC instead https://polymc.org/ (with one `l`)
 - pick in PollyMC:
     - Minecraft 1.7.10
     - Forge (latest) as loader
