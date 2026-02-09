@@ -7,3 +7,5 @@
   - unimixins
 - Sanguimancy
   - GuideAPI
+- prometheusExporter
+  - https://github.com/cpburnz/minecraft-prometheus-exporter

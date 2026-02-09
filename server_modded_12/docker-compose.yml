@@ -4,8 +4,7 @@ services:
     build:
       context: .
     tty: true
-    volumes:
-      # configs
+    volumes: &volumes # configs
       - type: bind
         source: ./configs/whitelist.json
         target: /code/whitelist.json
@@ -18,19 +17,34 @@ services:
       - type: bind
         source: ./configs/ops.json
         target: /code/ops.json
-
+      - type: bind
+        source: ./data/configs/usercache.json
+        target: /code/usercache.json
+      - type: bind
+        source: ./data/configs/server.properties
+        target: /code/server.properties
       # data
       - ./data/logs:/code/logs
       - ./data/world:/code/world
-      - ./data/AuthMe:/code/plugins/AuthMe # remembering auth of players
-      - ./data/WorldGuard:/code/plugins/WorldGuard
-      - ./data/WorldEdit:/code/plugins/WorldEdit
-      - type: bind
-        source: ./data/usercache.json
-        target: /code/usercache.json
-      - type: bind
-        source: ./data/server.properties
-        target: /code/server.properties
+
+      - ./data/dynmap:/code/dynmap
+      # - ./data/AuthMe:/code/plugins/AuthMe # remembering auth of players
+      # - ./data/WorldGuard:/code/plugins/WorldGuard
+      # - ./data/WorldEdit:/code/plugins/WorldEdit
     ports:
       - 25565:25565
       - 4567:4567
+      - 8123:8123
+
+  map:
+    image: ghcr.io/bluemap-minecraft/bluemap:v5.15
+    volumes:
+      - ./data/world:/app/world
+      # - /home/naa/.local/share/PollyMC/instances/1.21.11/.minecraft/saves/New World/:/app/world
+
+      # map specific stuff
+      - ./data/map_config:/app/config
+      - ./data/map_web:/app/web
+      - ./data/map_data:/app/data
+    ports:
+      - 8100:8100

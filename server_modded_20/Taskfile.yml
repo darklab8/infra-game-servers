@@ -1,0 +1,36 @@
+version: "3"
+tasks:
+  docker:build:
+    cmds:
+      - docker build --tag darkwind8/minecraft:modded-12.2-v0.1.2 .
+
+  docker:push:
+    cmds:
+      - docker push darkwind8/minecraft:modded-12.2-v0.1.2
+
+  docker:buildpush:
+    cmds:
+      - task: docker:build
+      - task: docker:push
+
+  clean:
+    cmds:
+      - sudo rm -R data/* | true
+      - mkdir data | true
+      - cp -R data_examples/* data/
+
+  rerun:
+    cmds:
+      - sudo rm -R data | true
+      - mkdir data
+      - cp -r configs data
+      - task: run
+  run:
+    cmds:
+      - docker-compose build && docker-compose run --rm --service-ports app
+
+  map:
+    - docker-compose build map; docker-compose run --rm --service-ports map -r -u -w
+
+env:
+  COMPOSE_FILE: docker-compose.yml

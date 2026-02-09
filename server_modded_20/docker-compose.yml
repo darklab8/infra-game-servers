@@ -1,0 +1,66 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: .
+    tty: true
+    volumes: &volumes # configs
+      - type: bind
+        source: ./configs/whitelist.json
+        target: /code/whitelist.json
+      - type: bind
+        source: ./configs/banned-ips.json
+        target: /code/banned-ips.json
+      - type: bind
+        source: ./configs/banned-players.json
+        target: /code/banned-players.json
+      - type: bind
+        source: ./configs/ops.json
+        target: /code/ops.json
+      - type: bind
+        source: ./data/configs/usercache.json
+        target: /code/usercache.json
+      - type: bind
+        source: ./data/configs/server.properties
+        target: /code/server.properties
+      # data
+      - ./data/logs:/code/logs
+      - ./data/world:/code/world
+      - ./data/bluemap_config:/code/config
+      - ./data/bluemap_data:/code/bluemap
+      - ./data/dynmap:/code/dynmap
+
+      # - ./data/AuthMe:/code/plugins/AuthMe # remembering auth of players
+      # - ./data/WorldGuard:/code/plugins/WorldGuard
+      # - ./data/WorldEdit:/code/plugins/WorldEdit
+    ports:
+      - 25565:25565
+      - 4567:4567
+      - 8100:8100
+      - 8123:8123
+
+  # map:
+  #   image: ghcr.io/bluemap-minecraft/bluemap:v5.15
+  #   volumes:
+  #     - ./data/world:/app/world
+  #     # - /home/naa/.local/share/PollyMC/instances/1.21.11/.minecraft/saves/New World/:/app/world
+
+  #     # map specific stuff
+  #     - ./data/map_config:/app/config
+  #     - ./data/map_web:/app/web
+  #     - ./data/map_data:/app/data
+  #   ports:
+  #     - 8100:8100
+
+  dynmap:
+    image: mariadb:12.1
+    environment:
+      MARIADB_ROOT_PASSWORD: "dynmap"
+      MARIADB_USER: "dynmap"
+      MARIADB_PASSWORD: "dynmap"
+      MARIADB_DATABASE: "dynmap"
+      MARIADB_ALLOW_EMPTY_PASSWORD: "yes"
+    expose:
+      - "3306"
+    volumes:
+      - ./data/mysql:/var/lib/mysql

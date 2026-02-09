@@ -15,5 +15,23 @@ tasks:
 
   clean:
     cmds:
-      - sudo rm -R data/*
+      - sudo rm -R data/* | true
+      - mkdir data | true
       - cp -R data_examples/* data/
+
+  rerun:
+    cmds:
+      - sudo rm -R data | true
+      - mkdir data
+      - cp -r configs data
+      - docker-compose down --volumes;  docker-compose build
+      - task: run
+  run:
+    cmds:
+      - docker-compose run --rm --service-ports app
+
+  map:
+    - docker-compose build map; docker-compose run --rm --service-ports map -r -u -w
+
+env:
+  COMPOSE_FILE: docker-compose.yml
