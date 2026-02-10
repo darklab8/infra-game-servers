@@ -57,4 +57,44 @@
 - https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap
 - https://www.curseforge.com/minecraft/mc-mods/falling-tree/download/3064035
 
+Management stuff
+https://www.curseforge.com/minecraft/mc-mods/set-home-waypoints/download/4675029
+https://github.com/htachoires/Set-Home-Waypoints/tree/1.12.2
+
+https://worldguard.enginehub.org/en/latest/regions/quick-start/
+https://enginehub.org/worldedit
+
 plans for installing:
+
+ServerTap:
+[23:13:30 ERROR]: Error occurred while enabling ServerTap v0.1.3 (Is it up to date?)
+ java.lang.NoSuchMethodError: org.eclipse.jetty.servlet.ServletHolder.<init>(Ljavax/servlet/Servlet;)V
+ turn off ServerTap, it is broken anyway
+[23:13:24 ERROR]: Could not load plugins/LuckPerms-Bukkit-5.5.32.jar in folder plugins because plugin invalid
+ org.bukkit.plugin.InvalidPluginException: Cannot find main class `me.lucko.luckperms.bukkit.loader.BukkitLoaderPlugin'
+
+# permissions to allow by default
+worldguard.region.addmember.*
+worldguard.region.addowner.*
+worldguard.region.info.*
+worldguard.region.redefine.*
+worldguard.region.removemember.*
+worldguard.region.select.*
+worldedit.selection.*
+minecraft.command.seed
+shw
+shw.command.home
+shw.command.sethome
+shw.command.shw
+shw.command.wp
+worldedit.selection
+worldguard.region
+worldguard.region.addmember
+worldguard.region.addowner
+worldguard.region.claim
+worldguard.region.info
+worldguard.region.list
+worldguard.region.removemember
+worldguard.region.removeowner
+worldguard.region.select
+worldguard.region.setparent

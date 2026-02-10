@@ -23,28 +23,27 @@ services:
       - type: bind
         source: ./data/configs/server.properties
         target: /code/server.properties
-      # data
       - ./data/logs:/code/logs
       - ./data/world:/code/world
 
       - ./data/dynmap:/code/dynmap
-      # - ./data/AuthMe:/code/plugins/AuthMe # remembering auth of players
-      # - ./data/WorldGuard:/code/plugins/WorldGuard
-      # - ./data/WorldEdit:/code/plugins/WorldEdit
+      - ./data/plugins_LuckPerms:/code/plugins/LuckPerms
+      - ./data/plugins_WorldEdit:/code/plugins/WorldEdit
+      - ./data/plugins_WorldGuard:/code/plugins/WorldGuard
+      - ./data/journeymap:/code/journeymap
     ports:
       - 25565:25565
       - 4567:4567
       - 8123:8123
 
-  map:
-    image: ghcr.io/bluemap-minecraft/bluemap:v5.15
+  dynmap:
+    image: mariadb:12.1
+    environment:
+      MARIADB_ROOT_PASSWORD: "dynmap"
+      MARIADB_USER: "dynmap"
+      MARIADB_PASSWORD: "dynmap"
+      MARIADB_DATABASE: "dynmap"
+    expose:
+      - "3306"
     volumes:
-      - ./data/world:/app/world
-      # - /home/naa/.local/share/PollyMC/instances/1.21.11/.minecraft/saves/New World/:/app/world
-
-      # map specific stuff
-      - ./data/map_config:/app/config
-      - ./data/map_web:/app/web
-      - ./data/map_data:/app/data
-    ports:
-      - 8100:8100
+      - ./data/mysql:/var/lib/mysql
